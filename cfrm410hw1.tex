@@ -1,48 +1,64 @@
 \documentclass{article}
 \linespread{1.3}
 \usepackage[margin=50pt]{geometry}
-\usepackage{amsmath,amsthm,amssymb, amsthm}
-\usepackage{tikz}
+\usepackage{amsmath, amsthm, amssymb, amsthm, tikz, fancyhdr}
+\pagestyle{fancy}
+
+\fancypagestyle{firstpageheader}
+{
+  \fancyhead[R]{Michael Huang \\ Homework 1 \\ Adekoya}
+}
+
 \begin{document}
+
+\thispagestyle{firstpageheader}
 
 \section*{1.}
 {\Large 
 
 \subsection*{(a)}
 
-
+f.r.i.e.n.d.s has 7 unique letters, so the number of words that can be formed is \\
+7! = \framebox[1.1\width]{\textbf{5040 words}}
 
 \subsection*{(b)}
 
-
+i.n.t.e.r.e.s.t.i.n.g. has 11 letters, but we note tthat we have 2 h's, 2 i's, 2 t's, and 2 e's. Therefore, to eliminate these identical word combinations that use the same letters, we can calculate this to be \\
+$\frac{11!}{2! \cdot 2! \cdot 2! \cdot 2!} = \frac{39916800}{2^4} = \frac{39916800}{16} = $ \framebox[1.1\width]{\textbf{2494800 words}}
 
 }
 
 \section*{2.}
 {\Large
 
-
+Of the 22 students, 10 are women and 12 are men--for each of these, we must pick 5. This means we have $\binom{10}{5}$ and $\binom{12}{5}$ ways to pick women and men, respectively. \\ With 5 men and 5 women, the number of ways to then pair them off is 5!. Intuitively, starting with 5 men or women, we have 5 remaining choices of partner for the first man or women, 4 remaining choices of partner for the second, etc. until the very last one which has exactly 1 remaining choice for a partner. We multiply this according to the basic principle of counting to get 5!.\\ \\
+We put this entire sequence of selection together using the basic principle of counting to find that we have a total of \\
+$\binom{10}{5} \cdot \binom{12}{5} \cdot 5!$ = $\frac{10!}{5!5!} \cdot \frac{12!}{5!7!} \cdot 120$ = $252 \cdot 792 \cdot 120$ = \framebox[1.1\width]{\textbf{23950080 ways}}
 
 }
 
 \section*{3.}
 {\Large 
 
-
+If we must distribute 7 distinct gifts among 11 children, which means that we have 11 possible children for any given gift, and since we cannot distribute a gift to a child that already has one, we have then 10 possible children left for the next gift to be distributed, and so on. We do this until we run out of gifts to distribute. \\
+Intuitively, this is $11 \times 10 \times 9 \times 8 \times 7 \times 6 \times 5 = $ \framebox[1.1\width]{\textbf{1663200 ways}}
 
 }
 
 \section*{4.}
 {\Large 
 
-
+We have 12 blue balloons, 9 green lanterns, and 6 red ribbons. Since we don't want any red ribbons to be next to each other, let's first place the other items. We have 12 blue balloons and 9 green lanterns for a total of 21 items, which means that we have $\binom{21}{12}$ or $\binom{21}{9}$ ways of placing these items. \\ 
+Now, we have 22 possible places in between any of these already-placed items where we could place a red ribbon. This ensures that the red ribbons will never be next to each other. This leaves us with $\binom{22}{6}$ ways of placing the red ribbons. \\ \\ 
+Finally, we combine these placements using the basic principle of counting to get a total of $\binom{21}{12} \cdot \binom{22}{6}$ = $293930 \cdot 74613$ = \framebox[1.1\width]{\textbf{21930999090 ways}}
 
 }
 
 \section*{5.}
 {\Large 
 
-
+The lab contains 3 rooms, with 2 beds in each room. We assign each pair of twins to a room, which can be done $3!$ ways. \\
+Within each room, we have 2! ways to assign each twin to a bed. We do this for 3 beds, so we have ${2!}^3$ ways of assignment total in the bed-deciding phase of the assignment. \\ Using the basic principle of counting, we are left with $3! \cdot {2!}^3 = 6 \cdot 8 = $ \framebox[1.1\width]{\textbf{48 ways}}
 
 }
 
@@ -51,28 +67,57 @@
 
 \subsection*{(a)}
 
+We must go up 3 times, and to the right 6 times. Therefore, we have a total of $6 + 3 = 9$ decisions to make in regards to either going up or to the right. We can think about this as picking 3 of the 9 decisions as going up, or 6 of the 9 decisions as going to the right. This means that we have $\binom{9}{6}$ or $\binom{9}{3}$ ways to go from point A to point B. This means we have $\binom{9}{6} = \frac{9!}{6!3!} = $ \framebox[1.1\width]{\textbf{84 paths}}
+
 \subsection*{(b)}
+
+Should we need to go through point C, we can break our trip down into two segments: A to C, and C to B. \\ 
+From point A to point C, we can use the same technique as before, finding that we need to go up 2 times and to the right 2 times, we have $\binom{2+2}{2} = \binom{4}{2} = $ 6 paths from A to C. From point C to point B, we need to go up 1 time and to the right 4 times, which means we have $\binom{1 + 4}{1} = \binom{5}{1} = $ 5 paths from C to B. Using the basic principle of counting, this gives us a total of $6 \cdot 5 = $ \framebox[1.1\width]{\textbf{30 paths}} that go through point C. \\ \\ 
+We know that all other the other paths total that we have don't go through point C, which leaves us with $84 - 30 = $ \framebox[1.1\width]{\textbf{54 paths}} that don't go through point C.
 
 }
 
 \section*{7.}
 {\Large 
 
-
+We want to count the strictly increasing vectors of length $k$ composed of the natural numbers from the range $[1, n]$. We can break it down into two distinct cases: \\ \\ 
+Case 1: $k > n$ \\
+In this case, we have more elements in the vector than numbers to compose it with. This means that we cannot possibly have a strictly increasing vector (where $x_1 < x_2 < \cdot \cdot \cdot < x_k$). Therefore, there are 0 vectors for this case. \\ \\
+Case 2: $k \leq n$ \\ 
+In this case, we have at least equal or more numbers to compose a vector than there are elements, which means that when we select our $k$ values from the pool of $n$ numbers, we can always arrange them into a strictly increasing subsequence. This means we just have to find the number of combinations in which we can do this, which will naturally be $n$ choose $k$, or $\binom{n}{k}$.
+\\ \\
+Putting these cases all together, we have a total of \framebox[1.1\width]{\textbf{$\binom{n}{k}$ vectors}}
 
 }
 
 \section*{8.}
 {\Large 
 
-
+Given a vector of length $n$, and that each element in the vector is either 0 or 1, $\sum_{i=1}^{n}x_i$ is odd. \\
+When considering how many ways there are to assign 0's and 1's to the vector such that we get a specific value $k$, we simply need to choose $k$ out of the $n$ elements in the vector to be 1's, which can be represented as $\binom{n}{k}$ ways to assign 0's and 1's to the $n$-length vector to get a total sum of $k$. \\
+We learned in class that according to binomial theorem, $2^n = \sum_{k=0}^{n}\binom{n}{k}$, which represents every single combination of the vector. We can represent every single even combination as $\sum_{k=0}^{n}\binom{n}{2k}$, which is algebraically equivalent to $\sum_{k=0}^{n}\binom{n}{k} \cdot \frac{1}{2}$. Again, since we know that $\sum_{k=0}^{n}\binom{n}{k} = 2^n$, we can simplify this to be $2^n \cdot \frac{1}{2}$, or $2^{n-1}$. Logically, we know that
+\begin{center}
+$\sum_\text{odd sum combinations}$ + $\sum_\text{even sum combinations}$ = $\sum_\text{total combinations}$ \\
+\end{center}
+and equivalently that
+\begin{center}
+$\sum_\text{odd sum combinations}$ = $\sum_\text{total combinations} - \sum_\text{even sum combinations}$ \\ 
+\end{center}
+Therefore, the total number of odd sum vectors is $2^n - 2^{n-1} = $ \framebox[1.1\width]{\textbf{$2^{n-1}$ vectors}
 
 }
 
 \section*{9.}
 {\Large 
 
-
+We essentially want to find the number of combinations that results from rolling a 6-sided die 3 times. We can visualize this as having 6 buckets, for the result of each side respectively. We can think about this as \\
+\begin{center}
+$x_1 + x_2 + x_3 + x_4 + x_5 + x_2 = 3 $ dice rolls
+\end{center}
+We can visualize this as placing 3 different items into the 6 different buckets. Visually, we could represent a combination like this (in this case, it would be the combination 1, 1, 2): \\ 
+$\Box$ $\Box$ + $\Box$ + + + + \\
+We can see this can be essentially represented as 8 spaces total where we pick where the boxes, that represent our dice rolls, go. \\ 
+This gives us the answer as we found in class, which is $\binom{8}{3}$ = \framebox[1.1\width]{\textbf{$56$ outcomes}}
 
 }
 
