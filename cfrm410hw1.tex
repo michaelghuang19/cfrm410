@@ -95,15 +95,16 @@ Putting these cases all together, we have a total of \framebox[1.1\width]{\textb
 
 Given a vector of length $n$, and that each element in the vector is either 0 or 1, $\sum_{i=1}^{n}x_i$ is odd. \\
 When considering how many ways there are to assign 0's and 1's to the vector such that we get a specific value $k$, we simply need to choose $k$ out of the $n$ elements in the vector to be 1's, which can be represented as $\binom{n}{k}$ ways to assign 0's and 1's to the $n$-length vector to get a total sum of $k$. \\
-We learned in class that according to binomial theorem, $2^n = \sum_{k=0}^{n}\binom{n}{k}$, which represents every single combination of the vector. We can represent every single even combination as $\sum_{k=0}^{n}\binom{n}{2k}$, which is algebraically equivalent to $\sum_{k=0}^{n}\binom{n}{k} \cdot \frac{1}{2}$. Again, since we know that $\sum_{k=0}^{n}\binom{n}{k} = 2^n$, we can simplify this to be $2^n \cdot \frac{1}{2}$, or $2^{n-1}$. Logically, we know that
+By know, we know the binomial theorem to be $(x+y)^n = \sum_{k=0}^{n} \binom{n}{k}x^ky^{n-k}$. We learned in class that by setting $x = 1$ and $y = 1$, we find that $2^n = \sum_{k=0}^{n}\binom{n}{k}$, which represents every single combination of the vector, since it represents the total of every way that we can get any possible target sum of the vector's elements. \\ 
+From the binomial theorem again, we can set $x = -1$ and $y = 1$, leaving us with $0 = \sum_{k=0}^{n}\binom{n}{k}-1^k$. This right side is equivalent to $\binom{n}{0} - \binom{n}{1} + \binom{n}{2} - \binom{n}{3} \cdot \cdot \cdot$, where every odd term is negative and every even term is positive. We can equivalently say that $0 = -\sum_{k=0}^{\frac{n}{2}}\binom{n}{2k-1} + \sum_{k=0}^{\frac{n}{2}}\binom{n}{2k}$, or that $\sum_{k=0}^{\frac{n}{2}}\binom{n}{2k-1} = \sum_{k=0}^{\frac{n}{2}}\binom{n}{2k}$. This tells us that 
+\begin{center}
+$\sum_\text{odd sum combinations}$ = $\sum_\text{even sum combinations}$ \\
+\end{center}
+In addition, logically, we know that
 \begin{center}
 $\sum_\text{odd sum combinations}$ + $\sum_\text{even sum combinations}$ = $\sum_\text{total combinations}$ \\
 \end{center}
-and equivalently that
-\begin{center}
-$\sum_\text{odd sum combinations}$ = $\sum_\text{total combinations} - \sum_\text{even sum combinations}$ \\ 
-\end{center}
-Therefore, the total number of odd sum vectors is $2^n - 2^{n-1} = $ \framebox[1.1\width]{\textbf{$2^{n-1}$ vectors}
+which tells us that exactly half of the total combinations result in an odd sum. Therefore, the total number of odd sum vectors is $2^n \div 2 = $ \framebox[1.1\width]{\textbf{$2^{n-1}$ vectors}
 
 }
 
