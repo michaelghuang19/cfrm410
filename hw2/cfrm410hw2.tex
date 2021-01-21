@@ -6,7 +6,7 @@
 
 \fancypagestyle{firstpageheader}
 {
-  \fancyhead[R]{Michael Huang \\ Homework 1 \\ Adekoya}
+  \fancyhead[R]{Michael Huang \\ Homework 2 \\ Adekoya}
 }
 
 \begin{document}
@@ -15,30 +15,56 @@
 
 \section*{1.}
 {\Large 
+60 percent of students wear neither a ring nor a necklace, 20 percent wear a ring, and 30 percent wear a necklace. \\ 
+Let $R$ represent the percentage of students that wear a ring. Let $N$ represent the percentage of students that wear a necklace.
 
 \subsection*{(a)}
+ We aim to find the percentage of students that wear either a ring or a necklace, or $R \cup N$, which would give us the appropriate probability if we chose a student at random. \\ \\
+According to De Morgan's Law, $(R \cup N)^C = R^C \cap N^C$. We also know by property of complement that $1 - (R \cup N)^C = R \cup N$, which is what we aim to find. \\
+We can thus just solve for $1 - (R^C \cap N^C) = 1 - 0.6 = 0.4$ \\
+Therefore, the probability that the student is wearing a ring or a necklace will be \framebox[1.1\width]{\textbf{0.4}}
 
 \subsection*{(b)}
+We aim to find the percentage of students that wear both a ring and a necklace, or $R \cap N$, which would give us the appropriate probability if we chose a student at random. \\
+According to the inclusion-exclusion principle, we know that $R \cap N = R + N - (R \cup N)$. We found $R \cup N$ in part 1a, so we can simplly solve: \\
+$= 0.2 + 0.3 - 0.4 = 0.1$ \\
+Therefore, the probability that the student is wearing a ring or a necklace will be \framebox[1.1\width]{\textbf{0.1}}
 
 }
 
 \section*{2.}
 {\Large
 
-
+We aim to prove that $P(E \cap F^C) = P(E) - P(E \cap F)$. \\
+Using De Morgan's Law, we can simplify the left-hand side from $P(E \cap F^C)$ to \\
+$= P(E^C \cup F)^C$ \\
+$= P(E^C) + P(F) - P(E \cap F^C)$ \\ Using the inclusion-exclusion principle
 
 }
 
 \section*{3.}
 {\Large 
 
-
+We aim to find the conditional probability that at least one lands on 6 given that the dice land on different numbers. \\
+Say that the event that at least one die lands on 6 is $X$, and the event that the dice land on different numbers is $Y$. We therefore aim to find $P(X|Y)$. \\ \\
+We know by the property of conditional probability that $P(X|Y) = \frac{P(X \cap Y)}{P(Y)}$. Let's find the probability of these individual elements. \\ \\ 
+We can determine that $P(X \cap Y)$--the probability of the at least one die landing on 6 and the dice also landing on different numbers--is $\frac{10}{36} = \frac{5}{18}$. This is because out of the $6 \times 6 = 36$ possible outcomes of rolling two dice, given that one of the dice is 6, there are 5 possibilities for the other dice that will be different. We also note that getting two 6's is not a valid combination. Since either die could be 6, we end up with $5 \times 2 = 10$ combinations. \\ 
+We can also determine that $P(Y)$--the probability of the dice landing on different numbers--is $\frac{5}{6}$. This is because given any first number we roll, we have $\frac{5}{6}$ chance of getting a distinct number from the first one, hence the probability is $1 \cdot \frac{5}{6} = \frac{5}{6}$. \\ \\ 
+Substituting in, we find that $\frac{\frac{5}{18}}{\frac{5}{6}} = $ \framebox[1.1\width]{\textbf{$\frac{1}{3}$}}
 
 }
 
 \section*{4.}
 {\Large 
 
+We want to find the probability that the first 2 selected are white, and the last 2 selected are black. Essentially, we want to find the probability that the first ball selected was white, the second ball selected was white, the third ball selected was black, and the fourth ball selected was black, in that specific order. For simplicity, let these be $P(W_1), P(W_2), P(B_3), $ and $P(B_4)$ respectively. \\
+We therefore aim to find the probability of each ball being drawn given that the former order of balls was drawn, or \\ 
+$= P(W_1)P(W_2 | W_1)P(B_3 | W_1 \cap W_2)P(B_4 | W_1 \cap W_2 \cap B_3) $ \\
+$= P(W_1 \cap W_2)P(B_3 | W_1 \cap W_2)P(B_4 | W_1 \cap W_2 \cap B_3) $ by Bayes' \\ 
+$= P(W_1 \cap W_2 \cap B_3)P(B_4 | W_1 \cap W_2 \cap B_3) $ by Bayes' \\ 
+$= P(W_1 \cap W_2 \cap B_3 \cap B_4)$ by Bayes' \\ 
+Finally, we simplify $P(W_1 \cap W_2 \cap B_3 \cap B_4)$: \\
+$=\frac{6}{15} \cdot \frac{5}{14} \cdot \frac{9}{13} \cdot \frac{8}{12} = \frac{6 \cdot 5 \cdot 9 \cdot 8}{15 \cdot 14 \cdot 13 \cdot 12} = \frac{3 \cdot 2}{7 \cdot 13} = $ \framebox[1.1\width]{\textbf{$\frac{6}{91}$}}
 
 
 }
@@ -46,16 +72,16 @@
 \section*{5.}
 {\Large 
 
+\subsection*{(a)}
 
+\subsection*{(b)}
 
 }
 
 \section*{6.}
 {\Large 
 
-\subsection*{(a)}
 
-\subsection*{(b)}
 
 }
 
@@ -76,7 +102,18 @@
 \section*{9.}
 {\Large 
 
+\subsection*{(a)}
 
+\subsection*{(b)}
+
+}
+
+\section*{10.}
+{\Large 
+
+\subsection*{(a)}
+
+\subsection*{(b)}
 
 }
 
