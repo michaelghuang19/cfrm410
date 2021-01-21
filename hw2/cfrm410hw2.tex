@@ -71,49 +71,83 @@ $=\frac{6}{15} \cdot \frac{5}{14} \cdot \frac{9}{13} \cdot \frac{8}{12} = \frac{
 
 \section*{5.}
 {\Large 
+A total of 48 percent of the women and 37 percent of the men took a class and attended the party. 62 percent of the original class was male. We know that the rest of the original class must be female, which is $100 - 62 = 38$ percent.
 
 \subsection*{(a)}
+We aim to find the percentage of those attending the party that were women. We know that 38 percent of the original class was female, and 48 percent of the original class' females attended the party. We can therefore multiple to calculate the percent of the original class that was both female and attending the party: \\
+$0.38 \cdot 0.48 = 0.1824$, or 18.24 percent of the original class was women that attended the party. \\ \\
+In the same way, we can calculate the percent of the original class that was both male and attending the party: \\
+$0.62 \cdot 0.37 = 0.2294$, or 22.94 percent of the original class was men that attended the party \\ \\
+We can now simply divide the percent of women that attended the party in the original class by the total percent of men and women that attended the party in the original class: \\
+$18.24 \div (18.24 + 22.94) = 0.44293346284$, or approximately \framebox[1.1\width]{\textbf{44.29 percent}} of those attending the party were women.
 
 \subsection*{(b)}
+We aim to find the percentage of the original class that attended the party. As we previously found, the percentage of the original class that attended the party that were women were 18.24 percent, and for men it was 22.94 percent. By adding these percentages of the original class together, we can see that the proportion of the original class that attended the party was $18.24 + 22.94$ = \framebox[1.1\width]{\textbf{41.18 percent}}.
 
 }
 
 \section*{6.}
 {\Large 
 
-
+The number of ways that we can get results from tossing a coin 6 times is $2^6 = 64$. The number of ways that we can get exactly 3 heads from tossing a coin 6 times is $\binom{6}{3} = \frac{6!}{3!3!} = 20$. Therefore, the probability that we will land on heads exactly 3 times from tossing a coin 6 times is $\frac{20}{64} = $ \framebox[1.1\width]{\textbf{$\frac{5}{16}$}}
 
 }
 
 \section*{7.}
 {\Large 
 
-
+If we have drawn 4 cards from a deck of 52 cards, then the probability that they are all of different suits is as follows: \\
+% P(Draw card of suit C, D, or E | Drew card of suit A)(P(Draw card of suit D or E | Drew card of ))
+We draw four cards at once. Say for our arbitrary "first" card, the probability doesn't matter since we will always have a new suit. For our arbitrarily picked "second" card, we need to have a card with suit distinct to the "first". We have one less card possibility, and 3 other suit possibilities, leaving us with a probability of picking a different suit to be $\frac{39}{51}$. We continue this process for the next arbitrarily picked "third" and "fourth" cards. Therefore our final probability of picking 4 cards of different suits out of a deck of 52 is \\ 
+$\frac{39}{51} \cdot \frac{26}{50} \cdot \frac{13}{49} = \frac{13182}{124950} = $ \framebox[1.1\width]{\textbf{$\frac{2197}{20825}$}}. 
 
 }
 
 \section*{8.}
 {\Large 
 
-
+The number of ways that we can seat 20 people around a table normally is $20!$, but we are overcounting the 20 different one-seat rotations of the seating that we can do that make them functionally equivalent, so the number of ways is actually $\frac{20!}{20} = 19!$ \\
+In addition, the number of ways that Alice and Bob can be seated directly next to each other is $2!$ ways. Then, if we seat 19 groups of people--18 remaining people and 1 pair--we find that they can be seated $\frac{19!}{19} = 18!$ ways according to the same logic we outlined above. Therefore, the total number of ways to seat Alice and Bob next to each other amongst the 20 people at the round table is $2 \cdot 18!$ ways. \\
+Therefore, the number of ways that Alice and Bob will be NOT next to each other is (by definition of complementary counting) $19! - (18! \cdot 2)$ ways. We then take this out of the entire possibility space of $19!$ ways of seating to get to our final result which is \\
+$\frac{19! - (18! \cdot 2) }{19!} = \frac{19!}{19!} - \frac{18! \cdot 2}{19!} = 1 - \frac{2}{19} = $ \framebox[1.1\width]{\textbf{$\frac{17}{19}$}}
 
 }
 
 \section*{9.}
 {\Large 
+We know that $P(A) = \frac{3}{4}$ and $P(B) = \frac{1}{3}$.
 
 \subsection*{(a)}
+Via the inclusion-exclusion principle, we know that $P(A \cup B) = P(A) + P(B) - P(A \cap B)$. Equivalently, we know that $P(A \cap B) = P(A) + P(B) - P(A \cup B)$. \\
+The upper limit of $P(A \cup B)$ is 1, since the maximum probability of either $A$ or $B$ happening is the entire probability space, and the lower limit is $\frac{3}{4}$, since we cannot have a lower chance of $A$ or $B$ happening since $P(A)$ (which is greater than $P(B)$) is $\frac{3}{4}$, so the probability space of $A$ or $B$ must be at least that. \\ \\
+Substituting leads us to determining our limits for $P(A \cap B)$. For the lower limit of $P(A \cap B)$, we take the upper limit of $P(A \cup B)$ and evaluate: \\
+$P(A \cap B) = \frac{3}{4} + \frac{1}{3} - 1 = \frac{1}{12}$\\
+For the upper limit of $P(A \cap B)$, we take the lower limit of $P(A \cup B)$ and evaluate: \\
+$P(A \cap B) = \frac{3}{4} + \frac{1}{3} - \frac{3}{4} = \frac{1}{3}$ \\ 
+which gives us our limits as we expected, that is, $\frac{1}{12} \leq P(A \cap B) \leq \frac{1}{3}$
 
 \subsection*{(b)}
+For $P(A \cap B) = \frac{1}{12}$, we know that event $A$ or $B$ is guaranteed to happen. In this case we can think of an example where $A$ or $B$ will always happen, say a game where we toss a token onto a play area, where the entire play area is split into areas where we could win a prize as described in  $A$ or $B$, but if the token lands and has parts of it in both, then we count the token as being in both and we win both $A$ and $B$ (venn diagram style). \\ 
+For $P(A \cap B) = \frac{1}{3}$, we can consider an example where $P(B)$ is completely contained within $A$ such that if $B$ occurs, then $A$ occurs. For example, we could represent $A$ and $B$ as proportional areas on a map, except $B$ would be overlaid on top of $A$ within the map. If we threw a dart on the map at random and didn't have any issues with borders or the like, then hitting $A$ would not necessarily mean you hit $B$, since $A$ contains $B$ within itself, but $B$ doesn't take up all of $A$. However, hitting $B$ would guarantee that you hit $A$, since $B$ is completely encapsulated into $A$.
 
 }
 
 \section*{10.}
 {\Large 
+A fair coin is flipped 4 times. Let $P(X)$ be the probability that all 4 flips land on tails.
 
 \subsection*{(a)}
+Let $P(Y)$ be the probability that the first flip lands on tails. We aim to find $P(X|Y) = \frac{P(X \cap Y)}{P(Y)}$, by Bayes'. \\
+We know that the probability that the first flip lands on tails AND all 4 flips landing on tails is simply $\frac{1}{2}^4$, since we need all 4 flips to land on tails for any such scenario to occur, which is equivalent to $\frac{1}{16}$ \\
+In addition, we know that $P(Y) = \frac{1}{2}$, since the probability that the first flip lands on tails is simply one half, with no additional factors. \\ \\ 
+Plugging this all in, we find that the probability that all 4 flipls land on tails given that the first flip lands on tails to be $\frac{\frac{1}{16}}{\frac{1}{2}} = $ \framebox[1.1\width]{\textbf{$\frac{1}{8}$}}
 
 \subsection*{(b)}
+Let $P(Y)$ be the probability that at least one flip lands on tails. We aim to find $P(X|Y) = \frac{P(X \cap Y)}{P(Y)}$, by Bayes'. \\
+We know that the probability that at least one flip landing on tails AND all 4 flips being tails is $\frac{1}{2}^4 = \frac{1}{16}$, since there is exactly one scenario out of the 16 possible that results in all 4 flips being tails. \\
+In addition, we know that there is exactly one way for at least one flip to NOT land on tails, so we know that of all the $2^4$ possibilities of outcomes for flipping a coin 4 times, we have $P(Y) = 1 - \frac{1}{2^4} = \frac{15}{16}$. \\ \\
+Plugging this all in, we find that the probability that all 4 flipls land on tails given that at leas one flip lands on tails to be $\frac{\frac{1}{16}}{\frac{15}{16}} = $ \framebox[1.1\width]{\textbf{$\frac{1}{15}$}}
+
 
 }
 
