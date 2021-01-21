@@ -36,9 +36,12 @@ Therefore, the probability that the student is wearing a ring or a necklace will
 {\Large
 
 We aim to prove that $P(E \cap F^C) = P(E) - P(E \cap F)$. \\
-Using De Morgan's Law, we can simplify the left-hand side from $P(E \cap F^C)$ to \\
-$= P(E^C \cup F)^C$ \\
-$= P(E^C) + P(F) - P(E \cap F^C)$ \\ Using the inclusion-exclusion principle
+We know that $F$ and $F^C$ are disjoint sets, which means that $P(E \cap F^C) \cup P(E \cap F) = P(E)$. We can also say that \\ $P(E \cap F^C) + P(E \cap F) + P(E cap F^C) \cap P(E \cap F) = P(E)$, or equivalently \\
+$P(E \cap F^C) = P(E) - P(E \cap F) - P(E cap F^C) \cap P(E \cap F)$
+\\ Since $F$ and $F^C$ are disjoint sets by definition as we previously stated, we know that $ P(E cap F^C) \cap P(E \cap F) = 0$, and this leaves us with $P(E) - P(E \cap F)$, which is exactly what we sought to prove.
+% Using De Morgan's Law, we can simplify the left-hand side from $P(E \cap F^C)$ to \\
+% $= P(E^C \cup F)^C$ \\
+% $= P(E^C) + P(F) - P(E \cap F^C)$ \\ Using the inclusion-exclusion principle
 
 }
 
