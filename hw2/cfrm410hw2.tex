@@ -38,9 +38,9 @@ Therefore, the probability that the student is wearing a ring or a necklace will
 {\Large
 
 We aim to prove that $P(E \cap F^C) = P(E) - P(E \cap F)$. \\
-We know that $F$ and $F^C$ are disjoint sets, which means that $P(E \cap F^C) \cup P(E \cap F) = P(E)$. We can also say that \\ $P(E \cap F^C) + P(E \cap F) + P(E cap F^C) \cap P(E \cap F) = P(E)$, or equivalently \\
-$P(E \cap F^C) = P(E) - P(E \cap F) - P(E cap F^C) \cap P(E \cap F)$
-\\ Since $F$ and $F^C$ are disjoint sets by definition as we previously stated, we know that $ P(E cap F^C) \cap P(E \cap F) = 0$, and this leaves us with $P(E) - P(E \cap F)$, which is exactly what we sought to prove.
+We know that $F$ and $F^C$ are disjoint sets, which means that $P(E \cap F^C) \cup P(E \cap F) = P(E)$. We can also say that \\ $P(E \cap F^C) + P(E \cap F) + P(E \cap F^C) \cap P(E \cap F) = P(E)$, or equivalently \\
+$P(E \cap F^C) = P(E) - P(E \cap F) - P(E \cap F^C) \cap P(E \cap F)$
+\\ Since $F$ and $F^C$ are disjoint sets by definition as we previously stated, we know that $ P(E \cap F^C) \cap P(E \cap F) = 0$, and this leaves us with $P(E) - P(E \cap F)$, which is exactly what we sought to prove.
 % Using De Morgan's Law, we can simplify the left-hand side from $P(E \cap F^C)$ to \\
 % $= P(E^C \cup F)^C$ \\
 % $= P(E^C) + P(F) - P(E \cap F^C)$ \\ Using the inclusion-exclusion principle
@@ -76,7 +76,7 @@ $=\frac{6}{15} \cdot \frac{5}{14} \cdot \frac{9}{13} \cdot \frac{8}{12} = \frac{
 
 \section*{5.}
 {\Large 
-A total of 48 percent of the women and 37 percent of the men took a class and attended the party. 62 percent of the original class was male. We know that the rest of the original class must be female, which is $100 - 62 = 38$ percent.
+A total of 48 percent of the women and 37 percent of the men took a class and attended the party. 62 percent of the original class was male. By the law of total probability, we know that the rest of the original class must be female, which is $100 - 62 = 38$ percent.
 
 \subsection*{(a)}
 We aim to find the percentage of those attending the party that were women. We know that 38 percent of the original class was female, and 48 percent of the original class' females attended the party. We can therefore multiple to calculate the percent of the original class that was both female and attending the party: \\
@@ -151,7 +151,7 @@ Plugging this all in, we find that the probability that all 4 flipls land on tai
 Let $P(Y)$ be the probability that at least one flip lands on tails. We aim to find $P(X|Y) = \frac{P(X \cap Y)}{P(Y)}$, by Bayes'. \\
 We know that the probability that at least one flip landing on tails AND all 4 flips being tails is $\frac{1}{2}^4 = \frac{1}{16}$, since there is exactly one scenario out of the 16 possible that results in all 4 flips being tails. \\
 In addition, we know that there is exactly one way for at least one flip to NOT land on tails, so we know that of all the $2^4$ possibilities of outcomes for flipping a coin 4 times, we have $P(Y) = 1 - \frac{1}{2^4} = \frac{15}{16}$. \\ \\
-Plugging this all in, we find that the probability that all 4 flipls land on tails given that at leas one flip lands on tails to be $\frac{\frac{1}{16}}{\frac{15}{16}} = $ \framebox[1.1\width]{\textbf{$\frac{1}{15}$}}
+Plugging this all in, we find that the probability that all 4 flips land on tails given that at leas one flip lands on tails to be $\frac{\frac{1}{16}}{\frac{15}{16}} = $ \framebox[1.1\width]{\textbf{$\frac{1}{15}$}}
 
 
 }
