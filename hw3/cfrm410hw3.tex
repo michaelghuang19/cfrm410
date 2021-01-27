@@ -17,19 +17,33 @@
 
 \section*{1.}
 {\Large 
+A present was hidden by mom with probability 0.6.
+A present was hidden by dad with probability 0.4.
+Mom hides it upstairs with probability 0.7, and downstairs 0.3.
+Dad hides it upstairs with probability 0.5, and downstairs 0.5.
 
 \subsection*{(a)}
+We aim to find the probability that the present is upstairs, or $P(U)$. By the law of total probability, we know that $P(U)= P(U \cap M) + P(U \cap D)$, where $P(M)$ and $P(D)$ are the probabilities that mom or dad hid the present, respectively. We are given these values. \\ \\
+Substituting them in, we get 
 
 \subsection*{(b)}
+We aim to find the probability that the present was hidden by dad, given that the present was downstairs. In other words, we want to find $P(Dad \mid Down)$, where $P(Dad)$ and $P(Down)$ is the probability that dad hid the present or that the present was hidden downstairs, respectively. Using the definition of conditional probability, we know that $P(Dad \mid Down) = P(Dad \cap Down) \div P(Down)$.  \\ \\ We found in 1(a) that the probability that the present is upstairs, and since we can find the probability that the present is downstairs using the definition of the complement, we find that $P(Down) = 1 - P(Up) = 1 - $
 
 }
 
 \section*{2.}
 {\Large
+We turn over cards one at a time until we get a face card. Say that the 10th card turned over is a King, the first face card to appear.
 
 \subsection*{(a)}
+We aim to find the conditional probability that the next card is the king of spades, which using the definition of conditional probability is $P(K_S \mid K)$, where $P(K_S)$ is the probabiltiy of the next card being the king of spades and $P(K)$ is the probability that the 10th card turned over was a king. By the definition of conditional probability, we know that $P(K_S \mid K) = P(K_S \cap K) \div P(K)$. \\ \\
+In order to find $P(K_S \cap K)$, we use the law of total probability. We have two cases: either the 10th card we drew was the king of spades, or it was not. In the case that it was, the probability of getting a king of spades directly afterwards is 0. This means that $P(K_S \cap K)$ is 0 in the case that the 10th card is a king of spades. Therefore, we only need look at the case where the 10th card is not a king of spades. The probability that the 10th card we draw is a king that isn't a king of spades is $\frac{3}{43}$, since we already drew 9 cards previously, and there are 3 other kings besides the king of spades. The probability that the 11th card drawn is the king of spades is thus just $\frac{1}{42}$. Putting this together, we find that $P(K_S \cap K) = \frac{3}{43} \times \frac{1}{42} = \frac{3}{1806} = \frac{1}{602}$. We also know that $P(K)$, or the probability that the 10th card turned over is a king and the first face card to appear, is simply $\frac{4}{43}$, since there are 4 kings and 9 cards already drawn. \\ \\
+Putting this all together, we can thusly find that $P(K_S \mid K) = P(K_S \cap K) \div P(K) = \frac{1}{602} \div \frac{4}{43} = $ \framebox[1.1\width]{$\frac{43}{2408}$}
 
 \subsection*{(b)}
+We aim to find the conditional probability that the next card is the queen of spades, which using the definition of conditional probability is $P(Q_S \mid K)$, where $P(Q_S)$ is the probabiltiy of the next card being the king of spades and $P(K)$ is the probability that the 10th card turned over was a king. By the definition of conditional probability, we know that $P(Q_S \mid K) = P(Q_S \cap K) \div P(K)$. \\ \\ 
+$P(Q_S)$ is simply $\frac{1}{42}$, since there is only one queen of spades left after we draw 10 cards. In addition, as we calculated previously, we know that $P(K) = \frac{4}{43}$. \\ \\ 
+Plugging all of these in, we can find that 
 
 }
 
