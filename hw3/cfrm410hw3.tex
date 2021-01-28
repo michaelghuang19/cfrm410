@@ -23,11 +23,13 @@ Mom hides it upstairs with probability 0.7, and downstairs 0.3.
 Dad hides it upstairs with probability 0.5, and downstairs 0.5.
 
 \subsection*{(a)}
-We aim to find the probability that the present is upstairs, or $P(U)$. By the law of total probability, we know that $P(U)= P(U \cap M) + P(U \cap D)$, where $P(M)$ and $P(D)$ are the probabilities that mom or dad hid the present, respectively. We are given these values. \\ \\
-Substituting them in, we get 
+We aim to find the probability that the present is upstairs, or $P(U)$. By the law of total probability, we know that $P(U)= P(U \cap M) + P(U \cap D)$, where $P(M)$ and $P(D)$ are the probabilities that mom or dad hid the present, respectively. We are given these values for probabilty that mom hides it, as well as her probability of hiding it upstairs, as well as those respective values for dad as well. We multiply them together since we need to address the probability that one of them hides it, and then that they also hide it upstairs. \\ \\
+Substituting them in, we simply get $0.6 \cdot 0.7 + 0.4 \cdot 0.5 =$ \framebox[1.1\width]{\textbf{0.62}}
 
 \subsection*{(b)}
-We aim to find the probability that the present was hidden by dad, given that the present was downstairs. In other words, we want to find $P(Dad \mid Down)$, where $P(Dad)$ and $P(Down)$ is the probability that dad hid the present or that the present was hidden downstairs, respectively. Using the definition of conditional probability, we know that $P(Dad \mid Down) = P(Dad \cap Down) \div P(Down)$.  \\ \\ We found in 1(a) that the probability that the present is upstairs, and since we can find the probability that the present is downstairs using the definition of the complement, we find that $P(Down) = 1 - P(Up) = 1 - $
+We aim to find the probability that the present was hidden by dad, given that the present was downstairs. In other words, we want to find $P(Dad \mid Down)$, where $P(Dad)$ and $P(Down)$ is the probability that dad hid the present or that the present was hidden downstairs, respectively. Using the definition of conditional probability, we know that $P(Dad \mid Down) = P(Dad \cap Down) \div P(Down)$.  \\ \\
+We found in 1(a) that the probability that the present is upstairs, and since we can find the probability that the present is downstairs using the definition of the complement, we find that $P(Down) = 1 - P(Up) = 1 - 0.62 = 0.38$. We also are given the probability that Dad is hiding it, as well as his probability of hiding it downstairs. \\ \\ 
+Putting this all together, we find that $P(Dad \mid Down) = P(Dad \cap Down) \div P(Down) = 0.4 * 0.5 \div 0.38 = $ \framebox[1.1\width]{\textbf{$\frac{10}{19}$, or $\thicksim$0.52631578947}}
 
 }
 
@@ -36,66 +38,76 @@ We aim to find the probability that the present was hidden by dad, given that th
 We turn over cards one at a time until we get a face card. Say that the 10th card turned over is a King, the first face card to appear.
 
 \subsection*{(a)}
-We aim to find the conditional probability that the next card is the king of spades, which using the definition of conditional probability is $P(K_S \mid K)$, where $P(K_S)$ is the probabiltiy of the next card being the king of spades and $P(K)$ is the probability that the 10th card turned over was a king. By the definition of conditional probability, we know that $P(K_S \mid K) = P(K_S \cap K) \div P(K)$. \\ \\
+We aim to find the conditional probability that the next card is the king of spades, which using the definition of conditional probability is $P(K_S \mid K)$, where $P(K_S)$ is the probability of the next card being the king of spades and $P(K)$ is the probability that the 10th card turned over was a king. By the definition of conditional probability, we know that $P(K_S \mid K) = P(K_S \cap K) \div P(K)$. \\ \\
 In order to find $P(K_S \cap K)$, we use the law of total probability. We have two cases: either the 10th card we drew was the king of spades, or it was not. In the case that it was, the probability of getting a king of spades directly afterwards is 0. This means that $P(K_S \cap K)$ is 0 in the case that the 10th card is a king of spades. Therefore, we only need look at the case where the 10th card is not a king of spades. The probability that the 10th card we draw is a king that isn't a king of spades is $\frac{3}{43}$, since we already drew 9 cards previously, and there are 3 other kings besides the king of spades. The probability that the 11th card drawn is the king of spades is thus just $\frac{1}{42}$. Putting this together, we find that $P(K_S \cap K) = \frac{3}{43} \times \frac{1}{42} = \frac{3}{1806} = \frac{1}{602}$. We also know that $P(K)$, or the probability that the 10th card turned over is a king and the first face card to appear, is simply $\frac{4}{43}$, since there are 4 kings and 9 cards already drawn. \\ \\
-Putting this all together, we can thusly find that $P(K_S \mid K) = P(K_S \cap K) \div P(K) = \frac{1}{602} \div \frac{4}{43} = $ \framebox[1.1\width]{$\frac{43}{2408}$}
+Putting this all together, we can thusly find that $P(K_S \mid K) = P(K_S \cap K) \div P(K) = \frac{1}{602} \div \frac{4}{43} = $ \framebox[1.1\width]{$\frac{1}{56}$}
 
 \subsection*{(b)}
-We aim to find the conditional probability that the next card is the queen of spades, which using the definition of conditional probability is $P(Q_S \mid K)$, where $P(Q_S)$ is the probabiltiy of the next card being the king of spades and $P(K)$ is the probability that the 10th card turned over was a king. By the definition of conditional probability, we know that $P(Q_S \mid K) = P(Q_S \cap K) \div P(K)$. \\ \\ 
-$P(Q_S)$ is simply $\frac{1}{42}$, since there is only one queen of spades left after we draw 10 cards. In addition, as we calculated previously, we know that $P(K) = \frac{4}{43}$. \\ \\ 
-Plugging all of these in, we can find that 
+We aim to find the conditional probability that the next card is the queen of spades, which using the definition of conditional probability is $P(Q_S \mid K)$, where $P(Q_S)$ is the probability of the next card being the king of spades and $P(K)$ is the probability that the 10th card turned over was a king. By the definition of conditional probability, we know that $P(Q_S \mid K) = P(Q_S \cap K) \div P(K)$. \\ \\ 
+$P(Q_S)$ is simply $\frac{1}{42}$, since there is only one queen of spades left after we draw 10 cards. In addition, as we calculated previously, we know that $P(K) = \frac{4}{43}$. We can multiply to find that $P(Q_S \cap K) = \frac{1}{42} \times \frac{4}{43} = \frac{4}{1806} = \frac{2}{903}$. \\ \\
+Plugging all of these in, we can find that $P(Q_S \mid K) = P(Q_S \cap K) \div P(K) = \frac{2}{903} \div \frac{4}{43} = $ \framebox[1.1\width]{$\frac{1}{42}$}
 
 }
 
 \section*{3.}
 {\Large 
 The probability that Barbara and Diane hit the wooden duck target is $p_1$ and $p_2$, respectively. 
-In terms of independence assumptions, I have assumed that both shots' chance of hitting the duck are independent and not correlated in any way.
+In terms of independence assumptions, I have assumed that both shots' chance of hitting the duck are independent and not correlated in any way. \\ \\ 
+Because we have assumed that the shots' probabilities are independent of each other, we can use the inclusion-exclusion principle, that is, $P(A \cup B) = P(A) + P(B) - P(A \cap B)$. We must first establish the probability that the duck is knocked over, which in terms of probabilities that Barbara and Diane hit the wooden duck ($P(B)$ and $P(D)$ respectively) is $P(B \cup D)$. As we established previously, we can simply use the inclusion-exclusion principle to find that the probability that the duck is knocked over $P(B \cup D) = P(B) + P(B) - P(B \cap D)$
 
 \subsection*{(a)}
-The probability that both shots hit the duck is $p_1 \cdot p_2$
+The probability that both shots hit the duck is essentially asking the same question as the probability given that the duck fell over, both shots hit the duck. We can express this as $P((B \cap D) \mid (B \cup D))$. Using conditional probability, we can find this to be $P((B \cap D) \mid (B \cup D)) = \frac{P(B \cap D)}{P(B \cup D)}$ \\ \\ Substituting this in, we find this to be \framebox[1.1\width]{\textbf{$\frac{p_1 \cdot p_2}{p_1 + p_2 - p_1 \cdot p_2}$}}
 
 \subsection*{(b)}
-% $P(B | F)$
-The probability that Barbara's shot hit the duck is $p_1$. 
+The probability that Barbara's shot hit the duck is essentially asking the same question as the probability given that the duck fell over, Barbara's shot hit the duck. We can express this as $P(B \mid (B \cup D)) = \frac{P(B \cap (B \cup D))}{P(B \cup D)}$, using the definition of conditional probability. We know $P(B \cap (B \cup D)) = P(B)$ since we know that the case of Barbara hitting the shot and the duck falling over only occurs when Barbara hits the shot. Putting this all together, we find this to be \framebox[1.1\width]{\textbf{$\frac{p_1}{p_1 + p_2 - p_1 \cdot p_2}$}}
 
 }
 
 \section*{4.}
 {\Large 
-Suppose we roll $N$ dice, where $N$ is a random number, with $P(N = i) = 2^{-i}$ for $i \geq 1$. The sum of the dice is denoted by $S$.
+Suppose we roll $N$ dice, where $N$ is a random number, with $P(N = i) = 2^{-i}$ for $i \geq 1$. The sum of the dice is denoted by $S$. I assume that the dice can be distinguished from each other.
 
 \subsection*{(a)}
-We aim to find the probability that $N = 2$, given that $S = 4$. 
+We aim to find the probability that $N = 2$, given that $S = 4$. We can translate this to be $\frac{P(N = 2 \cap S = 4)}{P(S = 4)}$. \\ \\
+Out of the $6^2 = 36$ combinations possible, we have 4 cases where we get a sum of 4: $\{2, 2\}, \{1, 3\}, \{3, 1\}$, but we can permute . We must also take into account the probability that $N = 2$, which by definition is $2^{-2} = \frac{1}{4}$. Therefore, the probability $P(N = 2 \cap S = 4)$ in this case is $\frac{1}{9} \cdot \frac{1}{4} = \frac{1}{36}$\\ \\ 
+To find $P(S = 4)$, we need to find the 4 cases of $N$ such that $S = 4$, that is, $N = \{1, 2, 3, 4\}$. \\
+$N = 1$: There is only one case here out of $6^1$ possible outcomes, where our roll is ${4}$. We must also take into account the probability that $N = 1$, which by definition is $2^{-1} = \frac{1}{2}$, so the probability in this case is $\frac{1}{6} \cdot \frac{1}{2} = \frac{1}{12}$ \\ 
+$N = 2$: Out of the $6^2 = 36$ combinations possible, we have 4 cases where we get a sum of 4: $\{2, 2\}, \{1, 3\}, \{3, 1\}$, but we can permute . We must also take into account the probability that $N = 2$, which by definition is $2^{-2} = \frac{1}{4}$. Therefore, the probability in this case is $\frac{1}{9} \cdot \frac{1}{4} = \frac{1}{36}$ \\ 
+$N = 3$: Out of the $6^3 = 216$ combinations possible, we have 1 combination where we get a sum of 4: $\{1, 1, 2\}$, which we can permute $3! = 6$ different ways to roll each number respectively, for a total of 6 cases. We must also take into account the probability that $N = 3$, which by definition $2^{-3} = \frac{1}{8}$ so the probabiltiy of this case is $\frac{6}{216} \cdot \frac{1}{8} = \frac{1}{288}$ \\ 
+$N = 4$: out of the $6^4 = 1296$ combinations possible, we have 1 combination where we get a sum of 4: $\{1, 1, 1, 1\}$, which we can permute $4!$ different ways to roll each number respectively, for a total of 24 cases. We must also take into account the probability that $N = 4$. which by definition is $2^{-4} = \frac{1}{16}$, so the probability of this case comes out to be $\frac{24}{1296} \cdot \frac{1}{16} = \frac{1}{864}$ \\ 
+Using the law of total probability, we can therefore find that $P(S = 4) = \frac{1}{12} + \frac{1}{36} + \frac{1}{288} + \frac{1}{864} = \frac{100}{864} = \frac{25}{216}$ \\ \\ 
+Putting this all together, we find that $\frac{P(N = 2 \cap S = 4)}{P(S = 4)} = \frac{1}{36} \div \frac{25}{216} =$ \framebox[1.1\width]{\textbf{$\frac{6}{25}$}}
 
 \subsection*{(b)}
-We aim to find the probability that $N$ is even.
+We aim to find the probability that $N$ is even. In this case, we can simply do $\sum_{i = 1}^{\infty} 2^{-2i} = \sum_{i = 1}^{\infty} 4^{-i} = \sum_{i = 1}^{\infty} (\frac{1}{4})^i = $ \framebox[1.1\width]{\textbf{$\frac{1}{3}$}}, by definition of geometric series. This is because $\sum_{i=0}^{\infty} (\frac{1}{n})^i = \frac{1}{1-\frac{1}{n}}$, and equivalently $\sum_{i=1}^{\infty} (\frac{1}{n})^i = \sum_{i=0}^{\infty} (\frac{1}{n})^i - (\frac{1}{n})^0$, so we can evaluate using $\sum_{i=1}^{\infty} (\frac{1}{n})^i = \frac{1}{1-\frac{1}{n}} - (\frac{1}{n})^0$. 
 
 \subsection*{(c)}
-We aim to find the probability that $S = 4$ given that $N$ is even.
+We aim to find the probability that $S = 4$ given that $N$ is even. In other words, we want to find $P(S = 4 \mid N_{even}) = \frac{P(S = 4 \cap N_{even})}{P(N_{even})}$. \\ \\
+We have already found $P(N_{even})$ in part (b), and we have pre-calculated the relevant cases for $P(S = 4 \cap N_{even})$. The sum of the probabilities for these cases are $\frac{1}{36} + \frac{1}{864} = \frac{25}{864}$. \\
+We can now plug it in to find $P(S = 4 \mid N_{even}) = \frac{P(S = 4 \cap N_{even})}{P(N_{even})} = \frac{25}{864} \div \frac{1}{3} = $ \framebox[1.1\width]{\textbf{$\frac{25}{288}$}}
 
 }
 
-\section*{5.}
-{\Large 
-There are 5 urns, with the nth urn containing $n-1$ red balls and $5-n$ green balls--each urn has 4 balls. We select an urn at random and take 2 balls out of it, at random and without replacement.
+% \section*{5.}
+% {\Large 
+% There are 5 urns, with the nth urn containing $n-1$ red balls and $5-n$ green balls--each urn has 4 balls. We select an urn at random and take 2 balls out of it, at random and without replacement.
 
-\subsection*{(a)}
-We aim to find the probability that the second ball is green.
+% \subsection*{(a)}
+% We aim to find the probability that the second ball is green.
 
-\subsection*{(b)}
-We aim to find the probability that the second ball is green given that the first ball is green.
+% \subsection*{(b)}
+% We aim to find the probability that the second ball is green given that the first ball is green.
 
-\subsection*{(c)}
-We aim to find the probability that we selected either the first urn or the second urn given that both balls are green. 
+% \subsection*{(c)}
+% We aim to find the probability that we selected either the first urn or the second urn given that both balls are green. 
 
-}
+% }
 
-\section*{6.}
-{\Large 
-Two players are playing poker heads up. Each player is dealt 2 cards. Both players are dealt a pocket pair. We aim to find the probability that one player is dealt a bigger pocket pair. \\ \\
-An easier way to solve this is by finding the probability that both players have the same pocket pair. 
+% \section*{6.}
+% {\Large 
+% Two players are playing poker heads up. Each player is dealt 2 cards. Both players are dealt a pocket pair. We aim to find the probability that one player is dealt a bigger pocket pair. \\ \\
+% An easier way to solve this is by finding the probability that both players have the same pocket pair. 
 
-}
+% }
 
 \end{document}
