@@ -20,9 +20,20 @@
 
 \subsection*{(a)}
 
+We aim to find the probability that the husband earns less than \$25,000. Out of the 500 married working couples, we see that there are 212 that have wives earning less than \$25,000 and husbands also earning less than \$25,000, as well as 36 couples that have wives earning more than \$25,000 and husbands earning less than \$25,000. Using the law of total probability, we can see that the probability that a randomly selected couple has a husband earning less than \$25,000 is $\frac{36}{500} + \frac{212}{500} = \frac{248}{500} = $ \framebox[1.1\width]{\textbf{$\frac{62}{125}$, or 0.496}}
+% $P (X \in A) = P(\{s \in S : X (s) \in A \})$
+
 \subsection*{(b)}
 
+We aim to find the conditional probability that the wife earns more than \$25,000, or $P(W_G)$ given that the husband
+earns more than \$25,000, or $P(H_G)$. Essentially, we aim to find $P(W_G \mid H_G)$. Using the definition of conditional probability, we can simplify this to $P(W_G \cap H_G) \div P(H_G)$. Using the values in the table, we find using the law of total probability that $P(H_G) = \frac{198 + 54}{500}$, and $P(W_H \cap H_G) = \frac{54}{500}$. \\ \\
+Putting this all together, we can find that $P(W_G \mid H_G) = \frac{P(W_G \cap H_G)}{P(H_G)} = \frac{\frac{54}{500}}{\frac{252}{500}} = \frac{54}{252} = $ \framebox[1.1\width]{\textbf{$\frac{3}{14}$, or $\sim$ 0.214}}
+
 \subsection*{(c)}
+
+We aim to find the conditional probability that the wife earns more than \$25,000, or $P(W_G)$ given that the husband earns less than this amount, or $P(H_L)$. Equivalently, we want to find $P(W_G \mid H_L)$, which we can simplify using the definition of conditional probability to $P(W_G \cap H_L) \div P(H_L)$. Using the values from the table again, we find that $P(W_H \cap H_L) = \frac{36}{500}$, and using the law of total probability that $P(H_L) = \frac{212 + 36}{500} = \frac{248}{500}$. \\ \\ 
+Putting this all together, we can find that $ P(W_G \mid H_L) = \frac{P(W_G \cap H_L)}{P(H_L)} = \frac{\frac{36}{500}}{\frac{248}{500}} = \frac{36}{248} = $ \framebox[1.1\width]{\textbf{$\frac{9}{62}$, or $\sim$ 0.145}}
+
 
 }
 
@@ -31,26 +42,54 @@
 
 \subsection*{(a)}
 
+We aim to find the probability that she receives mail on Monday, or $P(M)$. We can determine this using the law of total probability to account for both cases where she is accepted or rejected. Therefore, $P(M)$ looks more like this: \\
+$P(M) = P(M \mid R)P(R) + P(M \mid A)P(A)$, where $P(R)$ and $P(A)$ are the probabilities of getting rejected and accepted, respectively. By using the given values and values in the table, we can determine that \\ \\
+$P(M) = P(M \mid R)P(R) + P(M \mid A)P(A) = 0.05 \cdot 0.4 + 0.15 \cdot 0.6 = 0.02 + 0.09 = $ \framebox[1.1\width]{\textbf{0.11}}
+
 \subsection*{(b)}
+
+We aim to find the conditional probability that she received mail on Tuesday, or $P(T)$ given that she does not receive mail on Monday, or $P(M^C)$. This is equivalent to $P(T \mid M^C)$, which, by the definition of conditional probability, is equivalent to $P(T \cap M^C) \div P(M^C)$. \\ 
+We know that by definition, $P(M^C) = 1 - P(M)$, and we have $P(M)$ as determined by part (a). Therefore, $P(M^C) = 1 - 0.11 = 0.89$. In addition, we know that $P(T \cap M^C) = P(T)$, since the two events $T$ and $M$ are mutually exclusive. We can find $P(T)$ in the same way that we found $P(M)$ in part (a) using the law of total probability, that is, using the table, we can find that $P(T) = P(T \mid R)P(R) + P(T \mid A)P(A) = 0.1 \cdot 0.4 + 0.2 \cdot 0.6 = 0.04 + 0.12 = 0.16$. \\ \\ 
+Putting this all together, we can find that $P(T \mid M^C) = P(T \cap M^C) \div P(M^C) = \frac{0.16}{0.89} = $ \framebox[1.1\width]{\textbf{$\sim$ 0.180}}
 
 \subsection*{(c)}
 
+We aim to find the the conditional probability that she will be accepted, or $P(A)$, given that there is no mail through Wednesday, or $P(M \cup Tu \cup W)^C$. In other words, by the definition of conditional probability, we aim to find $P(A \mid (M \cup Tu \cup W)^C) = P(A \cap (M \cup Tu \cup W)^C) \div P(M \cup Tu \cup W)^C$. \\ \\ 
+To find $P(M \cup Tu \cup W)^C$, we know that we can calculate $P(M \cup Tu \cup W)$ by adding together $P(M)$ and $P(Tu)$ and $P(W)$ since events $M, T, $ and $W$ are mutually exclusive. We know $P(M)$ and $P(Tu)$ from previous parts, so we just need to calculate $P(W)$ using the same method, using the law of total probability and the values in the table: $P(W) = P(W \mid R)P(R) + P(W \mid A)P(A) = 0.1 \cdot 0.4 + 0.25 \cdot 0.6 = 0.04 + 0.15 = 0.19$. Summing them together, we can find that $P(M \cup Tu \cup W) = 0.11 + 0.16 + 0.19 = 0.46$, so by definition, $P(M \cup Tu \cup W)^C = 1 - 0.46 = 0.54$. \\
+By definition, we also know that $P(A \cap (M \cup Tu \cup W)^C) = P(A) \cdot P((M \cup Tu \cup W)^C \mid A)$. Note that we can't directly multiply since we can't make independence assumptions. Again, since $M, T, $ and $W$ are mutually exclusive, we can directly add these conditional probabilities together and take the complement, that is: \\
+$P((M \cup Tu \cup W)^C \mid A) = 1 - (P(M \mid A) + P(Tu \mid A) + P(W \mid A)) = 1 - (0.15 + 0.2 + 0.25) = 0.4$. We also know by definition that $P(A) = 0.6$. Therefore, we now know that $P(A \cap (M \cup Tu \cup W)^C) = P(A) \cdot P((M \cup Tu \cup W)^C \mid A) = 0.6 \cdot 0.4 = 0.24$. \\ \\ 
+Putting this all together, we can find that $P(A \mid (M \cup Tu \cup W)^C) = P(A \cap (M \cup Tu \cup W)^C) \div P(M \cup Tu \cup W)^C = \frac{0.24}{0.54} = $ \framebox[1.1\width]{\textbf{$\frac{4}{9}$, or $\sim$ 0.444}}
+
 \subsection*{(d)}
 
+We aim to find the conditional probability that she will be accepted, or $P(A)$, if mail comes on Thursday, or $P(Th)$. In other words, by the definition of conditional probability, we want to find $P(A) \mid P(Th) = P(A \cap Th) \div P(Th)$. \\ \\ 
+We can find $P(Th)$ in the same way as we did for the other days as we did in every previous part, using the law of total probability and the values in the table: $P(Th) = P(Th \mid R)P(R) + P(Th \mid A)P(A) = 0.15 \cdot 0.4 + 0.15 \cdot 0.6 = 0.15$. We also can find that by definition, $P(A \cap Th) = P(A) \cdot P(Th \mid A)$. Using our given values, we know that $P(A \cap Th) = 0.6 \cdot 0.15 = 0.09$.
+\\ \\ 
+Putting this all together, we can find that $P(A) \mid P(Th) = P(A \cap Th) \div P(Th) = \frac{0.09}{0.15} = $ \framebox[1.1\width]{\textbf{$\frac{3}{5}$, or 0.6}}
+
 \subsection*{(e)}
+
+We aim to find the conditional probability that she will be accepted, or $P(A)$, if no mail arrives that week, or $P(M \cup Tu \cup W \cup Th \cup F)^C$, which we will simplify to $P(N)$. In other words, by the definition of conditional probability, we want to find $P(A \mid N) = P(A \cap N) \div P(N)$. \\ \\ 
+By definition, we know that $P(A \mid N) = P(A) \cdot P(N \mid A)$. We know that $P(A) = 0.6$. We also know that since the mail arriving on each of the days is mutually exclusive, so we can add up the conditional probabilities given that she is accepted, and then take the complement, as we did previously in part (c). This means that we can simplify this to $P(N \mid A) = 1 - (0.15 + 0.2 + 0.25 + 0.15 + 0.1) = 0.15$. We can put this together to determine that $P(A) \cdot P(N \mid A) = 0.6 \cdot 0.15 = 0.09$.\\ 
+We can also determine using the law of total probability and the values in the table as we did for every day in the previous parts that $P(N) = P(N|R)P(R) + P(N|A)P(A) = (1 - (0.05 + 0.1 + 0.1 + 0.15 + 0.2)) \cdot 0.4 + (1 - (0.15 + 0.2 + 0.25 + 0.15 + 0.1)) \cdot 0.6 = 0.16 + 0.09 = 0.25$ \\ \\ 
+Putting this all together, we can determine that $P(A \mid N) = P(A \cap N) \div P(N) = \frac{0.09}{0.25} = $ \framebox[1.1\width]{\textbf{$\frac{9}{25}$, or 0.36}}
 
 }
 
 \section*{3.}
 {\Large 
 
-
+We aim to find the conditional probability that component 1 works, or $P(C_1)$ given that the system is functioning. Because we know that $C_1 \cup \dots \cup C_n$ represents the event that any of the systems function, we can use this to represent that the system is functioning, since the parallel system functions whenever at least one of its components works. Let $F = C_1 \cup \dots \cup C_n$, as in $P(F) = P(C_1 \cup \dots \cup C_n)$. \\ \\ 
+By the law of conditional probability, we aim to find $P(C_1 | F) = P(C_1 \cap F) \div P(F) = P(C_1) \cdot P(F \mid C_1) \div P(F)$. We know that $P(C_1) = \frac{1}{2}$, since every component functions independently. We also know that $P(F \mid C_1) = 1$, since given the fact that one component functions, the entire system therefore functions. Lastly, we know that $P(F) = 1 - (\frac{1}{2})^n$, since the only situation where the system wouldn't function would be when every component isn't working, or ${C_1}^C \cap \dots \cap {C_N}^C$, which is $\frac{1}{2}^n$ since each component works independently. \\ \\
+Putting this all together, we can determine that $P(C_1 | F) = P(C_1 \cap F) \div P(F) = P(C_1) \cdot P(F \mid C_1) \div P(F) = $ \framebox[1.1\width]{\textbf{$\frac{\frac{1}{2}}{1 - (\frac{1}{2})^n}$}}
 
 }
 
 \section*{4.}
 {\Large 
 
+We have 4 freshman boys, 6 freshman girls, and 6 sophomore boys, and $n$ sophomore girls. We aim to find $n$ such that sex and class are to be independent when a student is selected at random. \\ \\
+We know that the definition of independence is that $P(A \cap B) = P(A)P(B)$. For example, let $A = $ student is a sophomore, of which we have $6 + n$, and $B = $ student is a boys, of which we have 10. We have a total of $16 + n$ students. We must ensure that $P(A \cap B) = P(A)P(B)$, or that $\frac{6}{n + 16} = \frac{6 + n}{n + 16} \cdot \frac{10}{n + 16}$. Solving this in equation form, we get $n = $ \framebox[1.1\width]{\textbf{9 sophomore girls}}
 
 
 }
@@ -58,14 +97,23 @@
 \section*{5.}
 {\Large 
 
-
+% Prove that if $E_1,E_2, \dots ,E_n$ are independent
+% events, then
+% $$P(E_1 \cup E_2 \cup \dots \cup E_n) = 1 −
+% \prod_{i=1}^n
+% [1 - P(E_i)]$$
 
 }
 
 \section*{6.}
 {\Large 
 
-
+% Let $A,B,$ and $C$ be events relating to the experiment
+% of rolling a pair of dice. If
+% $$P(A\,\vert\, C) > P(B\,\vert\, C) \text{ and }  P(A\,\vert\, C^c) > P(B\,\vert\, C^c)$$
+% either prove that $P(A) > P(B)$ or give a counterexample
+% by defining events $A,B,$ and $C$ for
+% which that relationship is not true.
 
 }
 
