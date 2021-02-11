@@ -18,37 +18,60 @@
 \section*{1.}
 {\Large 
 
-
+Earth launches 500 missiles, Each missile will hit the rocket with probability 0.01, independently of other missiles. We aim to find the probability that at least 3 missiles hit the rocket, using the Poisson approximation. \\ \\ 
+We can also find this by taking the complement of the proabbility that less than 3 missiles hit the rocket, that is, either 0, 1, or 2 missiles hit the rocket. We can find this by taking the Poisson approximation for each of these values, which in our case is $X \sim \text{Pois}(\lambda)$ for $\lambda = np = 500 \cdot 0.01 = 5$. Therefore, we simply need to find 1 - $\sum_{0}^{2}$ $p(k) = \frac{\lambda^k}{k!} e^{-\lambda}$
+according the probability mass function for the Poisson distribution. \\ \\ 
+We can simplify this to $1 - \frac{5^0}{0!}e^{-5} - \frac{5^1}{1!}e^{-5} - \frac{5^2}{2!}e^{-5} = 1 - e^{-5} - 5e^{-5} - \frac{25e^{-5}}{2} = $ \framebox[1.1\width]{\textbf{$1 - \frac{37e^{-5}}{2}$}} 
 
 }
 
 \section*{2.}
 {\Large
 
-
+A certain typing agency employs 2 typists. The average number of errors per article is 3 when
+typed by the first typist, and 4.2 when typed by the second. We aim to approximate the probability that the article will have no errors. \\ \\
+Since the article is equally likely to be assigned to either of the typists, we need to use the law of total probability. In other words, we need to find $P(N) = P(N \mid T_1)P(T_1) \cdot P(N \mid T_2)P(T_2))$, where $P(T_x)$ is the probability of having Typist $x$, and $P(N)$ is the probability of having no errors. \\ \\ 
+To find $P(N \mid T_1)$, we can use the Poisson probability mass function to find $P(N)$ for $X \sim 3$ to be $\frac{3^0}{0!}e^{-3} = e^{-3}$. In the same way, we can find $P(N \mid T_2) = \frac{4.2^0}{0!}e^{-4.2} = e^{-4.2}$. \\ \\ 
+Putting this all together, we can find $P(N) = \frac{1}{2} \cdot e^{-3} + \frac{1}{2} \cdot e^{-4.2} = $ \framebox[1.1\width]{\textbf{$\frac{e^{-3} + e^{-4.2}}{2}$}}
 
 }
 
 \section*{3.}
 {\Large 
 
-
+The expected number of typographical errors on any page of a certain magazine is 0.2. We aim to find the probability that a certain page we read contains a total of 2 or more typographical errors. \\ \\ 
+Since the errors occur independently of each other, and the probability for an error is small, we can use the Poisson distribution. We can model using the probability mass function of the Poisson distribution, $X \sim \text{Pois}(0.2)$. Since we want to find the probability that a certain page contained 2 or more typographical errors, we can find this by taking the complement of a page having less than 2 or more typographical erorrs, that is, 0 or 1 typographical errors. In essence, we aim to find $1 - \text{Pois}(0.2)_{k = 0} - \text{Pois}(0.2)_{k = 1}$. \\ \\ 
+Putting this all together, we can simplify this to $1 - \frac{0.2^{0}}{0!}e^{-0.2} - \frac{0.2^1}{1!}e^{-0.2} = 1 - e^{-0.2} - 0.2e^{-0.2} = $ \framebox[1.1\width]{\textbf{$1 - \frac{6e^{-0.2}}{5}$}}
 
 }
 
 \section*{4.}
 {\Large 
 
-
+Let $N$ be a random number of fair coins, where $N$ has the Poisson distribution with parameter $2$. We toss each coin once. Let $X$ be the total number of heads. We aim to show that $X\sim P(1)$, that is, $X$ has the Poisson distribution with parameter $\lambda=1$. \\ \\ 
+We can find the probability for $X$, the number of heads, to be some abitrary number of heads $k$, i.e. $X = k$. We can represent this as $P(X = k)$, which we can depict using the law of total probability as $\sum_{X = k}^{\infty} P(X = k \mid N = n) \cdot P(N = n)$, where $n$ is some arbitrary number of coins. We know the distribution for $N$ to be $N \sim P(2)$, so by definition we can substitute in $P(N = n) = \frac{\lambda^n}{n!}e^{-\lambda}$. In addition, we know that the distribution of heads is also binomial, so we can substitute $P(X = k \mid N = n)$ with $\sum_{X = k}^{\infty} = \binom{n}{k} \cdot (p)^k \cdot (1 - p)^{n - k}$. Simplifying, we can find that \\ 
+$\sum_{X = k}^{\infty} P(X = k \mid N = n) \cdot P(N = n)$ \hfill Given\\
+$ = \sum_{X = k}^{\infty} \binom{n}{k}p^k(1-p)^{n-k} \cdot \frac{\lambda^n}{n!}e^{-\lambda}$ \hfill Substitution\\ 
+$= \frac{p^k\lambda^k}{k!}e^{-\lambda} \cdot \sum_{X = k}^{\infty} \frac{(1-p)^{n-k}\lambda^{n-k}}{(n-k)!}$ \hfill Algebra\\
+$= \frac{p^k\lambda^k}{k!}e^{-\lambda} \cdot e^{(1-p)\lambda}$ \hfill Taylor Series Definition\\
+$= \frac{(p\lambda)^k}{k!}e^{-p\lambda}$ \hfill Algebra\\ \\ 
+We can now substitute in $\lambda = 2$ and $p = \frac{1}{2}$ since it is a fair coin to find that we are left with $\frac{(1^k)}{k!}e^{-1}$, which shows that the probability mass function for finding the number of heads is indeed actually a Poisson distribution with $\lambda = 1$.
 
 }
 
 \section*{5.}
 {\Large 
 
+Consider a roulette wheel consisting of 38 numbers 1 through 36, 0, and 00. Smith always bets
+that the outcome will be any one of the numbers 1 through 12.
+
 \subsection*{(a)}
+Since we have 38 numbers, we assume that each section is divided equally, such that the probability of landing on each section is $p = \frac{1}{38}$. We can therefore use the definition of the geometric probability mass function to determine if Smith's first win through betting on any one of the numbers 1 through 12 will occur on his fourth round, that is, $k = 4$. We can simply plug in and say that $p_x(4) = P(X = 4) = (1 - \frac{12}{38})^{4-1} \cdot \frac{12}{38} = (\frac{26}{38})^3 \cdot \frac{12}{38} = $ \framebox[1.1\width]{\textbf{$\frac{13182}{130321}$}}
 
 \subsection*{(b)}
+We aim to find the probability that Smith will get his first win on his seventh round, or $P(W_7)$, after losing his first 4 rounds, or $P(L_4)$. \\ \\
+We can use the definition of conditional probability to determine that $P(S_7 \mid L_4) = \frac{P(W_7 \cap L_4)}{P(L_4)}$. $P(W_7 \cap L_4)$ can be simplified to $P(W_7)$, since losing the first four rounds is included within winning for the first time at the seventh round. Using the geometric probability mass function, we can find that $p_x(7) = P(X = 7) = (1 - \frac{12}{38})^{7-1} \cdot \frac{12}{38} = (\frac{13}{19})^6 \cdot \frac{6}{19}$. Likewise, we can also find that $P(L_4) = P(X = 4) = (1 - \frac{12}{38})^{4-1} \cdot \frac{12}{38} = (\frac{13}{19})^3 \cdot \frac{6}{19}$. \\ \\
+Putting this all together, we find that $P(W_7 \mid L_4) = \frac{P(W_7 \cap L_4)}{P(L_4)} = [(\frac{13}{19})^6 \cdot \frac{6}{19}] \div [(\frac{13}{19})^3 \cdot \frac{6}{19}] = (\frac{13}{19})^3 = $ \framebox[1.1\width]{\textbf{$\frac{2197}{6859}$}}
 
 }
 
@@ -56,8 +79,11 @@
 {\Large 
 
 \subsection*{(a)}
+We aim to find the probability that the first defect occurs in the sixth item inspected. We can use the geometric probability mass function at $k = 6$ and $p = 0.04$ as given to find that $p_x(6) = P(X = 6) = (1 - 0.04)^{6-1} \cdot 0.04 = 0.96^5 \cdot 0.04 = $ \framebox[1.1\width]{\textbf{$\sim 0.0326149079$, or about 3.26\%}}
 
 \subsection*{(b)}
+We aim to find the probability that a defect occurs somewhere in the first seven inspections. \\ \\
+As we previously established, this is a geometric distribution with $p = 0.04$. In order to find the complete probability of having a defect occur somewhere in the first seven inspections, we must add up the probability mass function values from $k = 1$ to $k = 7$, i.e. $\sum_{k = 1}^{7} (0.96)^{k-1} \cdot 0.04$. Using algebra and the  geometric series, we can simply find this to be $0.04 \cdot \sum_{k = 0}^{6} (0.96)^k = 0.04 \cdot \frac{1-0.96^(6+1)}{1-0.96} = $ \framebox[1.1\width]{\textbf{$\sim$ 0.24855252189, or about 24.86\%}}
 
 }
 
