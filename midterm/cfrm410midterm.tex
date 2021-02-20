@@ -19,30 +19,28 @@
 {\Large 
 
 \subsection*{(a)}
-Of the 12 swimmers, 2 are from the UK, 2 from China, 4 from Russia , 3 from the US, and 1 from France.
-Based on their rank in the competition, 
-each swimmer is assigned a score from 1 to 12. So, no two swimmers can have the same score. The scoring
-takes account of the countries the swimmers represent, it does not take account their individual identities.
-How many dierent outcomes are possible from the point of view of the scores? Also, how many of the
-possible outcomes have one US swimmer in the top three and two in the bottom three?
-
-
+To find the number of different outcomes possible from the point of view of scoring, we use the multinomial coefficient since we want to account for the fact that we score based on country rather than swimmer. Using this formula, we find that the number of different outcomes is therefore \\
+$\binom{n}{n_1, n_2, ..., n_r}$ where $\{n_1, n_2, ..., n_r\} $ describes how we group the different swimmers by country (i.e. 2 from UK, 2 from China, etc.) \\
+= $\binom{12}{2, 2, 4, 3, 1}$ \\ 
+= $\frac{12!}{2!2!4!3!1!}$ \\ 
+= $\frac{12!}{4 \cdot 24 \cdot 6}$ \\ 
+= $\frac{12!}{576}$ \\ 
+= \framebox[1.1\width]{\textbf{831600 outcomes}} \\ \\ 
+We also want to find how many of the possible outcomes have one US swimmer in the top three and two in the bottom three. To do this, we want to count the number of ways that we can rank the other swimmers, and then multiply this by the number of ways that we can rank the US swimmers in this desired description. \\
+\\ The number of ways that we can rank the US swimmer at the top is, using the binomial coefficient, $\binom{3}{1} = \frac{3!}{1!2!} = 3$, since we have 3 options for arranging 1 swimmer in the top 3. The number of ways that we can rank the US swimmers at the bottom are $\binom{3}{2} = \frac{3!}{2!1!} = 3$, since we have 3 rankings where we can arrange the 2 swimmers, which we treat identically. Therefore, the number of ways that we can rank the US swimmers is $3 \cdot 3 = 9$
+\\ The number of ways that we can rank the other swimmers can once again be found using the multinomial coefficient, since we are arranging the other swimmers in groups, treating compatriots as identical. Since we now have $12 - 3 = 9$ spots left, our multinomial coefficient $\binom{n}{n_1, n_2, ..., n_r}$ is now = $\binom{9}{2,2,4,1}$ = $\frac{9!}{2!2!4!1!}$ = $\frac{9!}{96} = 3780$ \\ \\ 
+Putting this all together, we can find that the number of possible outcomes with one US swimmer in the top three and two in the bottom three is $9 \cdot 3780 = $ \framebox[1.1\width]{\textbf{34020 outcomes}}
 
 \subsection*{(b)}
-How many ways are there to place 18 identical bowties in 5 distinguishable baskets such that
-each basket contains at least 2 bowties? There is no restriction on the maximum number of bowties each
-basket can have.
-
-
+Since each basket must contain at least 2 bowties, we know that $5 \cdot 2$ = 10 of the identical bowties must already be pre-placed into the 5 distinguishable baskets. This leaves us with 8 identical bowties to place into 5 distinguishable baskets, with no restrictions. We can also think of this as solving the equation $b_1 + b_2 + b_3 + b_4 + b_5 = 8$, where each basket $i$ is represented by some $b_i$. We want to find the number of nonnegative solutions to this equation, which we can find by taking $\binom{12}{4}$. We can also visualize this as lining up the 8 identical bowties, and choosing where to insert 4 dividers to create 5 groups, one group for each basket, which provides us with the same expression $\binom{8 + 4}{4}$. Solving this, we get \\
+$\binom{12}{4} = \frac{12!}{4!8!} = 11 \cdot 5 \cdot 9 = $ \framebox[1.1\width]{\textbf{495 ways}}
 
 \subsection*{(c)}
 A Greek sorority name can have either two or three letters, not necessarily distinct. How many
 sorority names are possible? 
-To find the number of sorority names possible with not necessarily distinct letters, we need to first find the number of sorority names possible with two letters and three letters separately. \\
-To do this, 
-
-Also, how many sorority names contain three distinct letters in alphabetical
-order? The Greek alphabet has 24 letters.
+To find the number of sorority names possible with not necessarily distinct letters, we need to first find the number of sorority names possible with two letters and three letters separately. For two letters, since the letters need not be distinct, we have $24^2 = 576$ combinations, while for three not necessarily distinct letters in a sequence, we have $24^3 = 13824$ combinations. Adding these up together, we find that we have a total of $576 + 13824$ = \framebox[1.1\width]{\textbf{14400 combinations}} \\ \\
+We also aim to find how many sorority names contain three distinct letters in alphabetical
+order. We know that any three distinct letters always form an alphabetical order, so we need to simply find the number of three-letter combinations that we can find using distinct letters. We can find this using the binomial coefficient $\binom{n}{k}$ for $n = 24$ and $k = 3$. Calculating this, we find that we have a total of $\binom{24}{3} = \frac{24!}{3!21!} = 4 \cdot 23 \cdot 22 = $ \framebox[1.1\width]{\textbf{2024 combinations}}
 
 }
 
@@ -50,44 +48,73 @@ order? The Greek alphabet has 24 letters.
 {\Large
 
 \subsection*{(a)}
-Let A and B be two arbitrary events. Prove that $P(A^C \cap B^C) \geq 1 - P(A) - P(B)$. State any
-axioms or basic results about probability that you use. (Hint: use inclusion-exclusion principle.)
+Let A and B be two arbitrary events. We aim to prove that $P(A^C \cap B^C) \geq 1 - P(A) - P(B)$.  \\ \\ 
+$P(A^C \cap B^C)$ \hfill Given\\ 
+$P(A \cup B)^C$ \hfill De Morgan's Law\\ 
+$(P(A) + P(B) - P(A \cap B))^C$ \hfill Inclusion-Exclusion Principle\\ 
+$1 - (P(A) + P(B) - P(A \cap B))$ \hfill Definition of Complement\\ 
+$1 - P(A) - P(B) + P(A \cap B)$ \hfill Algebra\\ \\
+This shows that $P(A^C \cap B^C) = 1 - P(A) - P(B) + P(A \cap B)$, and we can now easily tell that \\
+$1 - P(A) - P(B) + P(A \cap B) \geq 1 - P(A) - P(B)$ \\
+This is because if $P(A \cap B) > 0$, then the left side is easily greater, while in the other case, since probabilities cannot be negative, if $P(A \cap B) = 0$, then both sides are equal. This is the very definition of $\geq$, and tells us that \\
+$P(A^C \cap B^C) \geq 1 - P(A) - P(B)$, as we exactly sought to prove.
 
 \subsection*{(b)}
-Let A B and C be arbitrary events. Prove that \\ 
-$P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A^C \cap B \cap C) - P(A \cap B^C \cap C) - P(A \cap B \cap C^C) - 2P(A \cap B \cap C)$.\\ 
-State any axioms or basic results about probability that you use. 
-(Hint: This formula may also be of help to you $P(E) = P(E \cap F) + P(E \cap F^C)$.)
+Let A B and C be arbitrary events. We aim to prove that \\ 
+$P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A^C \cap B \cap C) - P(A \cap B^C \cap C) - P(A \cap B \cap C^C) - 2P(A \cap B \cap C)$. \\ \\ 
+$P(A \cup B \cup C)$ \\ . \hfill Given\\ 
+= $P(A) + P(B) + P(C) - P(B \cap C) - P(A \cap C) - P(A \cap B) + P(A \cap B \cap C)$ \\ . \hfill Inclusion-Exclusion Principle\\ 
+= $P(A) + P(B) + P(C) - P(A \cap B \cap C) - P(A^C \cap B \cap C)  - P(A \cap C) - P(A \cap B) + P(A \cap B \cap C)$ \\ . \hfill Definition of $P(E) = P(E \cap F) + P(E \cap F^C)$, where $E$ = $B \cap C$; $F$ = $A$\\ 
+= $P(A) + P(B) + P(C) - P(A^C \cap B \cap C) - P(A \cap B \cap C) - P(A \cap B^C \cap C) - P(A \cap B)$ \\ . \hfill Definition of $P(E) = P(E \cap F) + P(E \cap F^C)$, where $E$ = $A \cap C$; $F$ = $B$\\ 
+= $P(A) + P(B) + P(C) - P(A^C \cap B \cap C) - P(A \cap B \cap C) - P(A \cap B^C \cap C) - P(A \cap B \cap C) - P(A \cap B \cap C^C)$ \\ . \hfill Definition of $P(E) = P(E \cap F) + P(E \cap F^C)$, where $E$ = $A \cap B$; $F$ = $C$\\ 
+= $P(A) + P(B) + P(C) - P(A^C \cap B \cap C) - P(A \cap B^C \cap C) - P(A \cap B \cap C^C) - 2P(A \cap B \cap C) $ . \hfill Algebra\\ \\
+We have now found that $P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A^C \cap B \cap C) - P(A \cap B^C \cap C) - P(A \cap B \cap C^C) - 2P(A \cap B \cap C)$, which is exactly what we sought to prove.
 
 
 \subsection*{(c)}
-A fair dice is thrown twice. Consider the following events:
-$ E =$ "the first throw gives a 3 or a 4", and
-$ F =$ "the sum of the two throws is at least 7".
-Are the events $"E"$ and $"F"$ dependent or independent? Explain your answer.
+A fair dice is thrown twice. Define
+$ E =$ "the first throw gives a 3 or a 4"; \\ 
+$ F =$ "the sum of the two throws is at least 7".\\ \\
+To determine if the events are independent, we aim to determine whether or not $P(E) \cdot P(F) = P(E \cap F)$, which is the definition of independence. \\ \\
+We know that $P(E) = \frac{1}{3}$, since 2 out of the 6 possibilities are a 3 or 4. \\ 
+To find $P(F)$, we can find the number of ways that the sum of two throws will be less than 7, and subtract this from our total number of combinations, which we know to be $6 \cdot 6 = 36$ combinations. We now list out all the combinations: \\
+$<$ 2: $\{\}$\\
+2: $\{(1,1)\}$, so 1 combination\\
+3: $\{(1,3), (3,1)\}$, so 2 combinations\\
+4: $\{(1,3), (2,2), (3,1)\}$, so 3 combinations\\
+5: $\{(1,4), (2,3), (3,2), (4,1)\}$, so 4 combinations\\
+6: $\{(1,5), (2,4), (3,3), (4,2), (5,1)\}$, so 5 combinations\\
+This is a total of $1 + 2 + 3 + 4 + 5 =$ 15 ways. Therefore, the number of ways to get at least 7 is $36 - 15$ = 21 ways. As a probability, this is $\frac{21}{36} = \frac{7}{12}$ \\ \\
+Putting this all together, we can evaluate $P(E) \cdot P(F) = \frac{1}{3} \cdot \frac{7}{12} = \frac{7}{36}$. On the other hand, to find $P(E \cap F)$, we simply count which combinations result in a sum greater than 7: \\ 
+Starting with a term of 3, we can select any number from 4-6, this is 3 combinations. \\ 
+Starting with a term of 4, we can select any number from 3-6, this is 4 combinations. \\ 
+This results in a total of 3 + 4 = 7 combinations that such that the sum of the two throws is at least 7 and that the first throw is a 3 or 4. As a probability, this is $\frac{7}{36}$, which is our value for $P(E \cap F)$. This is in fact equivalent to $P(E)P(F) = \frac{7}{36}$, which tells us that \framebox[1.1\width]{\textbf{$E$ and $F$ are indeed independent.}}
 
 }
 
 \section*{3.}
 {\Large 
-The expected number of typographical errors on any given page of a book published
-by ABC house is 0.3. 
-When answering the following questions,be sure to explain what probability distribution you are using and why.
 
 \subsection*{(a)}
-We aim to find the probability that there will be at least one typo on a random page.
-
+We aim to find the probability that there will be at least one typo on a random page. We will use the Poisson distribution, since $p$ is relatively small, while the number of pages $n$ is relatively large in the context of a textbook, while each error is independent of each other. \\ \\ 
+We can then use the Poisson distribution $p(k) = \frac{\lambda^k}{k!}e^{-\lambda}$ to find $P(X \geq 1) = 1 - P(X = 0)$. We have $n = 1$ and $p = 0.3$, so we also know that $\lambda = np = 0.3$. Therefore, we can define our Poisson distribution to be $X \sim $ Pois(0.3), or $p(k) = \frac{0.3^k}{k!}e^{-0.3}$. Since we look for at least one typo on one random page, we can find the probability that we have 0 errors, and take the complement of that as we outlined earlier. We can evaluate $X \sim $ Pois(0.3) at $k = 0$ to be $p(0) = \frac{0.3^0}{0!}e^{-0.3} = e^{-0.3}$.
+\\ We can then find the final probability to be \framebox[1.1\width]{\textbf{ 1 - $e^{-0.3}$, or $\sim$ 0.259}}
 
 \subsection*{(b)}
-Assume Sarah was tired, so she skimmed through the page. Despite not being as thorough as
-she usually is, she finds a mistake. What is the probability that she will find exactly 3 more mistakes on
-that page when she gathers enough strength to read it carefully?
-
+Assume Sarah was tired, so she skimmed through the page. Despite not being as thorough as she usually is, she finds a mistake. What is the probability that she will find exactly 3 more mistakes on that page when she gathers enough strength to read it carefully? \\ \\
+We aim to find the probability that Sarah will find exactly 3 more mistakes mistakes on the page, or $P(N)$, given that she already found a mistake on the page, or $P(M)$. Thus, we want to find $P(N | M)$, which we know by the definition of conditional probability to be equal to $\frac{P(N \cap M)}{P(M)}$. We will use the Poisson distribution, since $p$ is relatively small, while the number of pages $n$ is relatively large in the context of a textbook, while each error is independent of each other. We will use the same Poisson distribution as we did previously, which we found to be $X \sim $ Pois(0.3). \\ \\ 
+To find $P(M)$, we aim to find the probability that Sarah found a mistake on the page, or $P(X \geq 1)$. Using $X \sim $ Pois(0.3), we can find this in the same way as we did in part (a), by finding $P(X \geq 1) = 1 - P(X = 0)$. We can find$X \sim $ Pois(0.3) at $k = 0$ to be $p(0) = \frac{0.3^0}{0!}e^{-0.3} = e^{-0.3}$, so $P(M) = P(X \geq 1) = 1 - e^{-0.3}$.
+To find $P(N)$, we aim to find the probability that Sarah finds exactly 3 more mistakes on the page, for a total of 4 mistakes on the page, or or $P(X = 4)$. Using $X \sim $ Pois(0.3), we can find this to be $p(4) = \frac{0.3^4}{4!}e^{-0.3}$. We can simplify $P(N \cap M)$ to be this, since $P(N)$ is contained within $P(M)$. \\ \\ 
+Putting it all together, we can find our final probability $P(N | M) = \frac{0.3^4}{4!}e^{-0.3} \div (1 - e^{-0.3})$ = \framebox[1.1\width]{\textbf{0.00096467487}}
 
 \subsection*{(c)}
-Two typists were each responsible for typing up half of Sarah's book. Sarah does not know who
-typed which half. The average number of errors per page is 2.5 when typed by the first person, and 4.6
-when typed by the second person. What is the probability that a randomly chosen page will have no errors?
+We aim to find the probability that a randomly chosen page will have no errors, taking into consideration the two typists. We will use the Poisson distribution, since $p$ is relatively small, while the number of pages $n$ is relatively large in the context of a textbook, while the occurence of each error is independent of each other. \\ \\ 
+Since each typist had half of the book, we can use the law of total probability to expand the overall probability of no error to \\ 
+$P(X = 0) = P(X = 0 | T_1)P(T_1) + P(X = 0 | T_2)P(T_2)$, \\  where the chance of randomly choosing a page by each typist $i$ is represented by $P(T_i)$. We know that each typist's error probability mass function is represented by $\lambda = $ their average number of errors per page, so for $T_1$, its error per page pmf is represented by $X \sim $ Pois(2.5), and for $T_2$, it is $X \sim $ Pois(4.6). Therefore, we can use the pmf equations for the Poisson distribution $p(k) = \frac{\lambda^k}{k!}e^{-\lambda}$ to put the entire equation together: \\ \\ 
+$P(X = 0) = P(X = 0 | T_1)P(T_1) + P(X = 0 | T_2)P(T_2)$ \\ 
+= $\frac{1}{2} \cdot \frac{2.5^0}{0!}e^{-2.5} + \frac{1}{2} \cdot \frac{4.6^0}{0!}e^{-4.6}$ \\ 
+= $\frac{1}{2}(e^{-2.5} + e^{-4.6})$ \\ 
+= \framebox[1.1\width]{\textbf{0.04606841718}}
 
 
 }
@@ -104,16 +131,21 @@ Let $X$ be the net winnings, that is, the amount you win in the last game
 (a negative number if you lose the final game) minus the losses for the previous games.
 
 \subsection*{(a)}
-What are the possible values of $X$? Calculate the pmf of $X$. Explain your answers.
+We must also note that the coin-flipping game itself (NOT $X$) can be modeled as a geometric distribution, since we can cleanly calculate the probability of of having our first win (and subsequent ending of the game) in this situation, where we will continue to play the game until we win and therefore stop. We are flipping a fair coin, which has probability $p = \frac{1}{2}$, so our pmf can be represented by $p_x(k) = (1-p)^{k-1} \cdot p$, or $p_x(k) = (\frac{1}{2})^{k-1} \cdot \frac{1}{2}$. This is equivalent to $p_x(k) = (\frac{1}{2})^k$, or $X \sim $ G(0.5), which tells us that the probability of winning at valid round $k$ where we still have money can be represented by $(\frac{1}{2})^k$. \\ \\ 
+\\ The possible values of $X$ are based upon which round we win (or lose). We know that by definition of the sum for the finite geometric series $\sum_{k=0}^{n-1}x^k = \frac{1 - x^n}{1 - x}$, which in the case for powers of 2, or $x = 2$, is that $\sum_{k=0}^{n-1} 2^k = 2^n - 1$. Since we lose the first $n-1$ rounds before we win at round $n$, we will therefore be losing $2^n - 1$ dollars. However, at the $n$th round, we win $2^n$ dollars. This means our net gain $X$ at any round before we run out of money will be $2^n - (2^n - 1)$ = 1 dollar. The only exception to this is when we run out of money by losing at the final round, since we have obviously lost every single round and therefore were unable to recoup our losses. Since we start with $2^9 = 512$ dollars, then at the 10th and final round where we can bet, we have $2^9 - (2^9 - 1) = 1$ dollar left, so we continue betting. In this round, we end up betting $2^9 = 512$ dollars, so if we lose, we end up having a net loss of $511 + 512$ = 1023 dollars, which we can also determine via $\sum_{k=0}^{9} = 2^10 - 1 = 1023$. Note that we used the power of 9 earlier since we start betting at the power of 0, or $2^0 = 1$ dollar. Therefore, the possible values of $X$ are \framebox[1.1\width]{\textbf{1 dollar and -1023 dollars}}.
+
+To find the pmf of $X$, we need to find the distribution of probabilities in relation to our values of $X$. In this case, where we only play a maximum of 10 rounds, our probability space includes the events where we win in rounds 1-10, as well as the event where we win in round 10. We can therefore calculate our total probability space to be $(\frac{1}{2})^{10} + \sum_{k=1}^{10} (\frac{1}{2})^k = \frac{1}{1024} + \frac{1023}{1024} = 1$, where $\sum_{k=1}^{10} (\frac{1}{2})^k$ represents the probabilities where we win and therefore end at round $k$, in accordance with the geometric nature of the coin-flipping game. These 10 rounds where we could possibly win have total probability that add up to $\frac{1023}{1024}$, while the one round where we could lose--the 10th round--has probability of occurring $\frac{1}{2}^{10} = \frac{1}{1024}$. \\ \\
+\framebox[1.1\width]{\textbf{Our pmf is therefore as follows:}} \\
+$\frac{1023}{1024}$ if $X = 1$\\ 
+$\frac{1}{1024}$ if $X = -1023$\\ 
+0 otherwise.
 
 
 \subsection*{(b)}
-Calculate $P(X > 0)$:
-
+We want to calculate the probability that our net winnings are greater than 0. From our pmf, we see that the only way that we can have $X > 0$ is by having $X = 1$, so we can therefore see that P$(X > 0) =$ \framebox[1.1\width]{\textbf{$\frac{1023}{1024}$}}.
 
 \subsection*{(c)}
-Calculate E($X$):
-
+By definition of geometric distribution, we know that for some geometric distribution $Y \sim $ G($p$), where $Y$ is the round at which we get our first success, E($Y$) = $\frac{1}{p}$, and since our $p = \frac{1}{2}$, E$(Y) = \frac{1}{\frac{1}{2}} = 2$. However, in this context, this means that we will successfully win at the 2nd round, which is not the last round where we lose money, so our net winnings $X$ is going to be \framebox[1.1\width]{\textbf{1 dollar}}. We can verify this by seeing that at round 2, we win 2 dollars, but have lost 1 dollar previously for a total of 2 - 1 = 1 dollar.
 
 }
 
