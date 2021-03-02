@@ -22,13 +22,12 @@ The time (in hours) required to repair a machine is an exponentially distributed
 parameter $\lambda = 1$.
 
 \subsection*{(a)}
-What is the probability that a repair time exceeds 1 hour?
-
+What is the probability that a repair time exceeds 1 hour? \\
+$X \sim \text{Exp}(\lambda)$, where $f(x) = \lambda e^{-\lambda x} \text{ for } x \geq 0$, and 0 otherwise.
 
 \subsection*{(b)}
-What is the conditional probability that a repair takes at least 10 hours, given that its duration
-exceeds 9 hours?
-
+We aim to the conditional probability that a repair takes at least 10 hours, or P$(X \geq 10)$, given that its duration
+exceeds 9 hours, or P$(X > 9)$. This is essentially $P(X \geq 10 \mid X > 9)$ 
 
 }
 
@@ -41,13 +40,14 @@ scenarios.
 
 \subsection*{(a)}
 The total mileage that both cars can be driven before they completely break down is an
-exponential random variable with mean 20 thousand miles.
+exponential random variable with mean 20 thousand miles. \\
+$X \sim \text{Exp}(\lambda)$, where $f(x) = \lambda e^{-\lambda x} \text{ for } x \geq 0$, and 0 otherwise.
 
 
 \subsection*{(b)}
-he total mileage that both cars can be driven before they completely break down is
-uniformly distributed over (0, 40,000).
-
+The total mileage that both cars can be driven before they completely break down is
+uniformly distributed over (0, 40,000). \\
+$F(x) = \text{P}(X \leq x) = \frac{x}{40,000} \text{ for } 0 < x < 40,000$ 
 
 }
 
@@ -109,7 +109,8 @@ The time that it takes to service a car is an exponential random variable with r
 \subsection*{(a)}
 If A. J. brings his car in at time 0 and M. J. brings her car in at time t, what is the
 probability that M. J.’s car is ready before A. J.’s car? (Assume that service times are
-independent and service begins upon arrival of the car.)
+independent and service begins upon arrival of the car.) \\
+$X \sim \text{Exp}(\lambda)$, where $f(x) = \lambda e^{-\lambda x} \text{ for } x \geq 0$, and 0 otherwise.
 
 
 \subsection*{(b)}
