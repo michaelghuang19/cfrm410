@@ -38,37 +38,30 @@ scenarios.
 \subsection*{(a)}
 We model the total mileage that both cars can be driven before they completely break down as an
 exponential random variable with mean 20 thousand miles. Since we know that E$(X)$ for an exponential variable $= \frac{1}{\lambda}$, we know that we can model the total mileage as $X ~ \text{Exp}(\frac{1}{20,000})$. \\ \\ 
-The new car has been driven 0 miles, so we simply aim to find P$(X > 0 + 20,000) = \text{P}(X > 20,000) = e^{-\lambda \cdot a} = e^{-\frac{1}{20,000} \cdot 20,000} = e^{-1} = $ \framebox[1.1\width]{\textbf{$\frac{1}{e}$}} \\
-The used car has been driven 10,000 miles, so we simply aim to find P$(X > 10,000 + 20,000) = e^{-\lambda \cdot a} = e^{-\frac{1}{20,000} \cdot 30,000} = e^{-\frac{3}{2}} = $ \framebox[1.1\width]{\textbf{$\frac{1}{\sqrt{e^3}}$}} \\ 
+The new car has been driven 0 miles, so we simply aim to find P$(X > 0 + 20,000) = \text{P}(X > 20,000) = e^{-\lambda \cdot a} = e^{-\frac{1}{20,000} \cdot 20,000} = e^{-1} = $ \framebox[1.1\width]{\textbf{$\frac{1}{e}$}} \\ \\ 
+The used car has been driven 10,000 miles, so we simply aim to find P$(X > 10,000 + 20,000 \mid X > 10,000) = P(X > 30,000 - 10,000) = P(X > 20,000) = e^{-\lambda \cdot a} = e^{-\frac{1}{20,000} \cdot 20,000} = e^{-1} = $ \framebox[1.1\width]{\textbf{$\frac{1}{e}$}} \\ 
 
 \subsection*{(b)}
 We model the total mileage that both cars can be driven before they completely break down as a uniform distribution over (0, 40,000), i.e., $X \sim \text{U}(0, 40,000)$. We can therefore say that $F(x) = \text{P}(X \leq x) = \frac{x}{40,000} \text{ for } 0 < x < 40,000$. \\ \\
-The new car has been driven for 0 miles, so we simply aim to find P$(X > 0 + 20,000) = 1 - \text{P}(X \leq 20,000) = 1 - \frac{20,000}{40,000} = $ \framebox[1.1\width]{\textbf{$\frac{1}{2}$}} \\ 
-The used car has been driven for 0 miles, so we simply aim to find P$(X > 10,000 + 20,000) = 1 - \text{P}(X \leq 30,000) = 1 - \frac{30,000}{40,000} = $ \framebox[1.1\width]{\textbf{$\frac{1}{4}$}}
+The new car has been driven for 0 miles, so we simply aim to find P$(X > 0 + 20,000) = 1 - \text{P}(X \leq 20,000) = 1 - \frac{20,000}{40,000} = $ \framebox[1.1\width]{\textbf{$\frac{1}{2}$}} \\ \\
+The used car has been driven for 10,000 miles, so we simply aim to find P$(X > 10,000 + 20,000 \mid X > 10,000)$. We can use Bayes' to find that this is equivalent to $\frac{P(X > 30,000) \cap P(X > 10,000)}{P(X > 10,000)}$ = $\frac{P(X > 30,000)}{P(X > 10,000)}$ since $X > 10,000$ is contained within $X > 30,000$. Solving this, we find that \\
+$\frac{P(X > 30,000)}{P(X > 10,000)} = \frac{1 - \text{P}(X \leq 30,000)}{1 - \text{P}(X \leq 10,000)} = \frac{1 - \frac{30,000}{40,000}}{1 - \frac{10,000}{40,000}} = \frac{\frac{1}{4}}{\frac{3}{4}} = $ \framebox[1.1\width]{\textbf{$\frac{1}{3}$}}
 
 }
 
 \section*{3.}
 {\Large 
 
-Let  $X, Y$ be continuous r.v.s with the following joint probability density function:
-
-\[
-f_{X,Y}\left(x,y\right)=\begin{cases}
-e^{-x}\cdot\frac{k}{\sqrt{x}}& \,0< x,\,\, 0\le|y| \le \sqrt{x};\\
-0 & \,\mbox{otherwise,}
-\end{cases}
-\]
-
 \subsection*{(a)}
 We know that by definition, $\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f_{X, Y} (x, y) \,dx \,dy = 1$, so we must go ahead and take this double integral to find $k$. \\ \\
 Let us change the order and first take the integral with respect to $y$. For this integral, we have two overlapping ranges due to the nature of the absolute value: $0 \leq y \leq \sqrt{x}$ and $0 \geq y \geq -\sqrt{x}$, or $-\sqrt{x} \leq y \leq \sqrt{x}$, which we can account for as follows: \\ 
-$\int_{-\infty}^{\infty} f_{X, Y} (x, y) \,dy = \int_{0}^{\sqrt{x}} e^{-x} \cdot \frac{k}{\sqrt{x}} \,dy + \int_{-\sqrt{x}}^{0} e^{-x} \cdot \frac{k}{\sqrt{x}} \,dy$ \\
-$= [y \cdot (e^{-x} \cdot \frac{k}{\sqrt{x}})] |_{0}^{\sqrt{x}} + [y \cdot (e^{-x} \cdot \frac{k}{\sqrt{x}})] |_{-\sqrt{x}}^{0}$ \\ 
-$= (e^{-x} \cdot k) - 0 + 0 - (e^{-x} \cdot -k)$ \\ 
+$\int_{-\infty}^{\infty} f_{X, Y} (x, y) \,dy = \int_{-\sqrt{x}}^{\sqrt{x}} e^{-x} \cdot \frac{k}{\sqrt{x}} \,dy$ \\
+$= [y \cdot (e^{-x} \cdot \frac{k}{\sqrt{x}})] |_{-\sqrt{x}}^{\sqrt{x}}$ \\ 
+$= (e^{-x} \cdot k) - (e^{-x} \cdot -k)$ \\ 
 $= 2k \cdot e^{-x}$ \\ \\
-We can now take the integral with respect to $x$:
-$\int_{-\infty}^{\infty} f_{X} (x) \,dx = \int_{0}^{\infty} 2k \cdot e^{-x} \,dx$ \\ 
+We can now take the integral with respect to $x$,
+$\int_{-\infty}^{\infty} f_{X} (x) \,dx$: \\ 
+$ = \int_{0}^{\infty} 2k \cdot e^{-x} \,dx$ \\ 
 $ = (2k \cdot -e^{-x}) |_{0}^{\infty}$ \\ 
 $ = 2k \cdot -e^{-\infty} - (2k \cdot -e^{-0})$ \\ 
 $ = 0 + 2k \cdot e^{0}$ \\ 
@@ -76,26 +69,19 @@ $ = 2k = 1$ \\
 From this, we can determine that \framebox[1.1\width]{\textbf{$k = \frac{1}{2}$}}
 
 \subsection*{(b)}
+% 0 otherwise
+% replace k
 We know by definition that the marginal density $f_X (x) = \int_{-\infty}^{\infty} f_{X, Y} (x, y) \,dy$ \\ 
 $= \int_{-\sqrt{x}}^{\sqrt{x}} e^{-x} \cdot \frac{1}{2\sqrt{x}}$ \\ 
 $= (y \cdot (e^{-x} \cdot \frac{1}{2\sqrt{x}})) |_{-\sqrt{x}}^{\sqrt{x}}$ \\ 
 $= (\frac{e^{-x}}{2}) - (-\frac{e^{-x}}{2})$ \\ 
 $= e^{-x}$ \\ \\
-We have that \framebox[1.1\width]{\textbf{$f_x = e^{-x}$}}, which by definition allows us to identify that $X$ an \\ \framebox[1.1\width]{\textbf{exponential distribution}}.
+We have that \framebox[1.1\width]{\textbf{$f_x = e^{-x}$ for $0 < x < \infty$ and 0 otherwise}}, which by definition allows us to identify that $X$ an \\ \framebox[1.1\width]{\textbf{exponential distribution}}.
 
 }
 
 \section*{4.}
 {\Large 
-The random vector $(X, Y)$ is said to be uniformly distributed over a region $R$ if, for some
-constant $c$, its joint density is
-
-\[
-f_{X,Y}\left(x,y\right)=\begin{cases}
-c& \,\mbox{if} \left(x,y\right)\in\mathbb R\\
-0 & \,\mbox{otherwise,}
-\end{cases}
-\]
 
 \subsection*{(a)}
 We know that by definition of integral and using the bounds of $R$, \\
@@ -161,9 +147,6 @@ $ = $ \framebox[1.1\width]{\textbf{$1 - 3e^{-2}$}}
 
 \section*{6.}
 {\Large 
-Suppose $X, Y$  are independent random variables with probability density functions
-\[f_X (t) = f_Y (t) =\frac12e^{-|t|}, \,\,\, t \in \mathbb R\]
-Find the pdf $f_Z (t)$ of $Z = X + Y$ . Hint: Consider the cases $t < 0$ and $t \ge 0$ separately. \\ \\ 
 We know that for independent $X$, $Y$, and $Z = X + Y$, $f_Z(t) = \int_{-\infty}^{\infty}f_X(t - s)f_Y(s) \,ds$, which we can simplify to be $\int_{-\infty}^{\infty} \frac{e^-{|t-s|}}{2} \cdot \frac{e^{-|s|}}{2}$. By the definition of absolute value, we know that we must consider the two cases $t < 0$ and $t \geq 0$ separately. We can do this as follows: \\ \\ 
 Case 1: $t < 0$. We break up the integral in the following ranges: $[-\infty, t], [t, 0], [0, \infty].$ \\ \\
 $\int_{-\infty}^{t} \frac{e^{-|t-s|}}{2} \cdot \frac{e^{-|s|}}{2} \,ds = \int_{-\infty}^{t} \frac{e^{-t+s}}{2} \cdot \frac{e^{s}}{2} \,ds = \frac{e^{-t + 2s}}{8} |_{-\infty}^{t} = \frac{e^{t}}{8}$ \\ 
@@ -174,7 +157,7 @@ $\int_{0}^{\infty} \frac{e^-{|t-s|}}{2} \cdot \frac{e^{-|s|}}{2} \,ds = \int_{0}
 We note that $t < 0 < s$, so $t - s < 0$ and $s > 0$. This means that we substitute $-|t-s| = t - s$ and $-|s| = -s$; \\  \\ \\
 So for $t < 0$, $f_Z(t) = \frac{e^t}{8} - \frac{te^t}{4} + \frac{e^t}{8} = -\frac{e^t(t - 1)}{4}$
 \\ \\ 
-Case 2: $t \geq 0$. We break up the integral in the following ranges: $[-\infty, 0], [0, t], [t, \infty].$
+Case 2: $t \geq 0$. We break up the integral in the following ranges: $[-\infty, 0], [0, t], [t, \infty].$ \\ \\ 
 $\int_{-\infty}^{0} \frac{e^{-|t-s|}}{2} \cdot \frac{e^{-|s|}}{2} \,ds = \int_{-\infty}^{0} \frac{e^{-t+s}}{2} \cdot \frac{e^{s}}{2} \,ds = \frac{e^{-t + 2s}}{8} |_{-\infty}^{0} = \frac{e^{-t}}{8}$ \\ 
 We note that $s < 0 < t$, so $t - s > 0$ and $s < 0$. This means that we substitute $-|t-s| = -t+s$ and $-|s| = s$;  \\ \\ 
 $\int_{0}^{t} \frac{e^{-|t-s|}}{2} \cdot \frac{e^{-|s|}}{2} \,ds = \int_{0}^{t} \frac{e^{-t+s}}{2} \cdot \frac{e^{-s}}{2} \,ds = (\frac{e^{-t}}{4} \cdot s) |_{0}^{t} = \frac{te^{-t}}{4}$ \\ 
