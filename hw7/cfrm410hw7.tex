@@ -138,17 +138,24 @@ The joint pdf $f_{X, Y} = \frac{1}{4}$ as we found above. We note that the circl
 The time that it takes to service a car is an exponential random variable with rate 1, that is, $X \sim \text{Exp}(1)$, with $f(x) = e^{-x}$.
 
 \subsection*{(a)}
-AJ brings his car in at time 0 and MJ brings her car in at time $t$. We aim to find the probability that MJ’s car is ready before AJ’s car, that is, P$(m + t < a)$, where $a$ represents the time it takes AJ's car to be ready and $m$ represents the time it takes MJ's car to be ready. \\
-$X \sim \text{Exp}(\lambda)$, where $f(x) = \lambda e^{-\lambda x} \text{ for } x \geq 0$, and 0 otherwise. \\ 
-\framebox[1.1\width]{\textbf{$\frac{\pi}{4}$}}
-
-
+AJ brings his car in at time 0 and MJ brings her car in at time $t$. We aim to find the probability that MJ’s car is ready before AJ’s car, that is, P$(y + t < x)$, where $x$ represents the time it takes AJ's car to be ready and $y$ represents the time it takes MJ's car to be ready. We can utilize $f(x, y)$ to effectively find $F'(x)$, subce we are essentially finding P$(y + t < x)$ as previously stated. We use the definition of the exponential distribution to then find that $f(x, y) = e^{-(x + y)}$, since $\lambda = 1$.
+We can then take the double integral to determine P$(X > Y + t)$: \\ \\
+= $\int_{0}^{\infty} \int_{y + t}^{\infty} e^{-(x + y)} \,dx \,dy$ \\
+= $\int_{0}^{\infty} -(e^{-(x + y)}) |_{y + t}^{\infty} \,dy$ \\ 
+= $\int_{0}^{\infty} e^{-(t + y + y)} \,dy$ \\ 
+= $\int_{0}^{\infty} e^{-t - 2y} \,dy$ \\
+= $\frac{-e^{-t - 2y}}{2} |_{0}^{\infty}$ \\
+= \framebox[1.1\width]{\textbf{$\frac{e^{-t}}{2}$}}
 
 \subsection*{(b)}
-If both cars are brought in at time 0, with work starting on M. J.’s car only when A.J.’s
-car has been completely serviced, what is the probability that M. J.’s car is ready before
-time 2?
-
+In the same terms as the previous part, we now aim to find the probability that AJ and MJ both get their cars serviced before time 2, or P$(x + y < 2)$. We can adjust the terms of our integration to reflect this: \\ \\
+$\int_{0}^{2} \int_{0}^{2 - y} e^{-(x + y)} \,dx \,dy$ \\ 
+$= \int_{0}^{2} -e^{-(x + y)} |_{0}^{2-y} \,dy$ \\
+$ = \int_{0}^{2} -e^{-(2 - y + y)} - (-e^{-y}) \,dy$ \\ 
+$ = \int_{0}^{2} -e^{-2} + e^{-y} \,dy$ \\ 
+$ = (-e^{-2} \cdot y - e^{-y}) |_{0}^{2} $ \\
+$ = (-e^{-2} \cdot 2 - e^{-2}) - (0 - e^{-0})$ \\
+$ = $ \framebox[1.1\width]{\textbf{$1 - 3e^{-2}$}}
 
 }
 
@@ -157,8 +164,31 @@ time 2?
 Suppose $X, Y$  are independent random variables with probability density functions
 \[f_X (t) = f_Y (t) =\frac12e^{-|t|}, \,\,\, t \in \mathbb R\]
 Find the pdf $f_Z (t)$ of $Z = X + Y$ . Hint: Consider the cases $t < 0$ and $t \ge 0$ separately. \\ \\ 
-We know that for $Z = X + Y$, $f_Z(t) = \int_{-\infty}^{\infty}f_X(t - s)f_Y(x) \,ds$. \\ 
-By te definition of absolute value, we know that we can have $t < 0$ and $t \geq 0$. 
+We know that for independent $X$, $Y$, and $Z = X + Y$, $f_Z(t) = \int_{-\infty}^{\infty}f_X(t - s)f_Y(s) \,ds$, which we can simplify to be $\int_{-\infty}^{\infty} \frac{e^-{|t-s|}}{2} \cdot \frac{e^{-|s|}}{2}$. By the definition of absolute value, we know that we must consider the two cases $t < 0$ and $t \geq 0$ separately. We can do this as follows: \\ \\ 
+Case 1: $t < 0$. We break up the integral in the following ranges: $[-\infty, t], [t, 0], [0, \infty].$ \\ \\
+$\int_{-\infty}^{t} \frac{e^{-|t-s|}}{2} \cdot \frac{e^{-|s|}}{2} \,ds = \int_{-\infty}^{t} \frac{e^{-t+s}}{2} \cdot \frac{e^{s}}{2} \,ds = \frac{e^{-t + 2s}}{8} |_{-\infty}^{t} = \frac{e^{t}}{8}$ \\ 
+We note that $s < t < 0$, so $t - s > 0$ and $s < 0$. This means that we substitute $-|t-s| = -t + s$ and $-|s| = s$; \\ \\ 
+$\int_{t}^{0} \frac{e^{-|t-s|}}{2} \cdot \frac{e^{-|s|}}{2} \,ds = \int_{t}^{0} \frac{e^{t-s}}{2} \cdot \frac{e^{s}}{2} \,ds = (\frac{e^{t}}{4} \cdot s) |_{t}^{0} = -\frac{te^{t}}{4}$ \\ 
+We note that $t < s < 0$, so $t - s < 0$ and $s < 0$. This means that we substitute $-|t-s| = t - s$ and $-|s| = s$; \\ \\ 
+$\int_{0}^{\infty} \frac{e^-{|t-s|}}{2} \cdot \frac{e^{-|s|}}{2} \,ds = \int_{0}^{\infty} \frac{e^{t-s}}{2} \cdot \frac{e^{-s}}{2} \,ds = -\frac{e^{t - 2s}}{8} |_{0}^{\infty} = \frac{e^{t}}{8}$ \\ 
+We note that $t < 0 < s$, so $t - s < 0$ and $s > 0$. This means that we substitute $-|t-s| = t - s$ and $-|s| = -s$; \\  \\ \\
+So for $t < 0$, $f_Z(t) = \frac{e^t}{8} - \frac{te^t}{4} + \frac{e^t}{8} = -\frac{e^t(t - 1)}{4}$
+\\ \\ 
+Case 2: $t \geq 0$. We break up the integral in the following ranges: $[-\infty, 0], [0, t], [t, \infty].$
+$\int_{-\infty}^{0} \frac{e^{-|t-s|}}{2} \cdot \frac{e^{-|s|}}{2} \,ds = \int_{-\infty}^{0} \frac{e^{-t+s}}{2} \cdot \frac{e^{s}}{2} \,ds = \frac{e^{-t + 2s}}{8} |_{-\infty}^{0} = \frac{e^{-t}}{8}$ \\ 
+We note that $s < 0 < t$, so $t - s > 0$ and $s < 0$. This means that we substitute $-|t-s| = -t+s$ and $-|s| = s$;  \\ \\ 
+$\int_{0}^{t} \frac{e^{-|t-s|}}{2} \cdot \frac{e^{-|s|}}{2} \,ds = \int_{0}^{t} \frac{e^{-t+s}}{2} \cdot \frac{e^{-s}}{2} \,ds = (\frac{e^{-t}}{4} \cdot s) |_{0}^{t} = \frac{te^{-t}}{4}$ \\ 
+We note that $0 < s < t$, so $t - s > 0$ and $s > 0$. This means that we substitute $-|t-s| = -t + s$ and $-|s| = -s$;  \\ \\
+$\int_{t}^{\infty} \frac{e^-{|t-s|}}{2} \cdot \frac{e^{-|s|}}{2} \,ds = \int_{t}^{\infty} \frac{e^{t-s}}{2} \cdot \frac{e^{-s}}{2} \,ds = -\frac{e^{t - 2s}}{8} |_{t}^{\infty} = \frac{e^{-t}}{8}$ \\ 
+We note that $0 < t < s$, so $t - s < 0$ and $s > 0$. This means that we substitute $-|t-s| = t - s$ and $-|s| = -s$;  \\ \\
+So for $t \geq 0$, $f_Z(t) = \frac{e^{-t}}{8} + \frac{te^{-t}}{4} + \frac{e^{-t}}{8} = \frac{e^{-t}(t+1)}{4}$ \\ \\ 
+Putting it all together: \\ 
+\[
+f_{Z}\left(t\right)=\begin{cases}
+-\frac{e^t(t - 1)}{4}& \,\mbox{if } t < 0\\
+\frac{e^{-t}(t+1)}{4}& \,\mbox{if } t \geq 0\\
+\end{cases}
+\]
 
 }
 
