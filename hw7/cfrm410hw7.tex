@@ -18,16 +18,13 @@
 \section*{1.}
 {\Large 
 
-The time (in hours) required to repair a machine is an exponentially distributed r.v. with
-parameter $\lambda = 1$.
-
 \subsection*{(a)}
-What is the probability that a repair time exceeds 1 hour? \\
-$X \sim \text{Exp}(\lambda)$, where $f(x) = \lambda e^{-\lambda x} \text{ for } x \geq 0$, and 0 otherwise.
+% $X \sim \text{Exp}(\lambda)$, where $f(x) = \lambda e^{-\lambda x} \text{ for } x \geq 0$, and 0 otherwise.
+We use the exponential distribution to model the waiting time for $t = 1$ hour as demonstrated in class with $\lambda = 1$, i.e., $X \sim \text{Exp}(1)$. We can therefore take P$(X > 1) = e^{-\lambda \cdot 1} = e^{-1} = $ \framebox[1.1\width]{\textbf{$\frac{1}{e}$}}
 
 \subsection*{(b)}
-We aim to the conditional probability that a repair takes at least 10 hours, or P$(X \geq 10)$, given that its duration
-exceeds 9 hours, or P$(X > 9)$. This is essentially $P(X \geq 10 \mid X > 9)$ 
+We aim to find the conditional probability that a repair takes at least 10 hours, or P$(X \geq 10)$, given that its duration exceeds 9 hours, or P$(X > 9)$. This is essentially P$(X \geq 10 \mid X > 9)$. 
+Using the memorylessness property of the exponential distribution to simplify $P(X \geq 10 \mid X > 9) = $ P$(X > 1) = = e^{-\lambda \cdot 1} = e^{-1} = $ \framebox[1.1\width]{\textbf{$\frac{1}{e}$}}, as we previously found.
 
 }
 
@@ -39,15 +36,15 @@ each car, find the probability that he can drive it for an extra 20,000 miles in
 scenarios.
 
 \subsection*{(a)}
-The total mileage that both cars can be driven before they completely break down is an
-exponential random variable with mean 20 thousand miles. \\
-$X \sim \text{Exp}(\lambda)$, where $f(x) = \lambda e^{-\lambda x} \text{ for } x \geq 0$, and 0 otherwise.
-
+We model the total mileage that both cars can be driven before they completely break down as an
+exponential random variable with mean 20 thousand miles. Since we know that E$(X)$ for an exponential variable $= \frac{1}{\lambda}$, we know that we can model the total mileage as $X ~ \text{Exp}(\frac{1}{20,000})$. \\ \\ 
+The new car has been driven 0 miles, so we simply aim to find P$(X > 0 + 20,000) = \text{P}(X > 20,000) = e^{-\lambda \cdot a} = e^{-\frac{1}{20,000} \cdot 20,000} = e^{-1} = $ \framebox[1.1\width]{\textbf{$\frac{1}{e}$}} \\
+The used car has been driven 10,000 miles, so we simply aim to find P$(X > 10,000 + 20,000) = e^{-\lambda \cdot a} = e^{-\frac{1}{20,000} \cdot 30,000} = e^{-\frac{3}{2}} = $ \framebox[1.1\width]{\textbf{$\frac{1}{\sqrt{e^3}}$}} \\ 
 
 \subsection*{(b)}
-The total mileage that both cars can be driven before they completely break down is
-uniformly distributed over (0, 40,000). \\
-$F(x) = \text{P}(X \leq x) = \frac{x}{40,000} \text{ for } 0 < x < 40,000$ 
+We model the total mileage that both cars can be driven before they completely break down as a uniform distribution over (0, 40,000), i.e., $X \sim \text{U}(0, 40,000)$. We can therefore say that $F(x) = \text{P}(X \leq x) = \frac{x}{40,000} \text{ for } 0 < x < 40,000$. \\ \\
+The new car has been driven for 0 miles, so we simply aim to find P$(X > 0 + 20,000) = 1 - \text{P}(X \leq 20,000) = 1 - \frac{20,000}{40,000} = $ \framebox[1.1\width]{\textbf{$\frac{1}{2}$}} \\ 
+The used car has been driven for 0 miles, so we simply aim to find P$(X > 10,000 + 20,000) = 1 - \text{P}(X \leq 30,000) = 1 - \frac{30,000}{40,000} = $ \framebox[1.1\width]{\textbf{$\frac{1}{4}$}}
 
 }
 
@@ -64,12 +61,27 @@ e^{-x}\cdot\frac{k}{\sqrt{x}}& \,0< x,\,\, 0\le|y| \le \sqrt{x};\\
 \]
 
 \subsection*{(a)}
-Find the constant k.
-
+We know that by definition, $\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f_{X, Y} (x, y) \,dx \,dy = 1$, so we must go ahead and take this double integral to find $k$. \\ \\
+Let us change the order and first take the integral with respect to $y$. For this integral, we have two overlapping ranges due to the nature of the absolute value: $0 \leq y \leq \sqrt{x}$ and $0 \geq y \geq -\sqrt{x}$, or $-\sqrt{x} \leq y \leq \sqrt{x}$, which we can account for as follows: \\ 
+$\int_{-\infty}^{\infty} f_{X, Y} (x, y) \,dy = \int_{0}^{\sqrt{x}} e^{-x} \cdot \frac{k}{\sqrt{x}} \,dy + \int_{-\sqrt{x}}^{0} e^{-x} \cdot \frac{k}{\sqrt{x}} \,dy$ \\
+$= [y \cdot (e^{-x} \cdot \frac{k}{\sqrt{x}})] |_{0}^{\sqrt{x}} + [y \cdot (e^{-x} \cdot \frac{k}{\sqrt{x}})] |_{-\sqrt{x}}^{0}$ \\ 
+$= (e^{-x} \cdot k) - 0 + 0 - (e^{-x} \cdot -k)$ \\ 
+$= 2k \cdot e^{-x}$ \\ \\
+We can now take the integral with respect to $x$:
+$\int_{-\infty}^{\infty} f_{X} (x) \,dx = \int_{0}^{\infty} 2k \cdot e^{-x} \,dx$ \\ 
+$ = (2k \cdot -e^{-x}) |_{0}^{\infty}$ \\ 
+$ = 2k \cdot -e^{-\infty} - (2k \cdot -e^{-0})$ \\ 
+$ = 0 + 2k \cdot e^{0}$ \\ 
+$ = 2k = 1$ \\
+From this, we can determine that \framebox[1.1\width]{\textbf{$k = \frac{1}{2}$}}
 
 \subsection*{(b)}
-Find the marginal density $f_X (x)$ and identify the distribution of $X$.
-
+We know by definition that the marginal density $f_X (x) = \int_{-\infty}^{\infty} f_{X, Y} (x, y) \,dy$ \\ 
+$= \int_{-\sqrt{x}}^{\sqrt{x}} e^{-x} \cdot \frac{1}{2\sqrt{x}}$ \\ 
+$= (y \cdot (e^{-x} \cdot \frac{1}{2\sqrt{x}})) |_{-\sqrt{x}}^{\sqrt{x}}$ \\ 
+$= (\frac{e^{-x}}{2}) - (-\frac{e^{-x}}{2})$ \\ 
+$= e^{-x}$ \\ \\
+We have that \framebox[1.1\width]{\textbf{$f_x = e^{-x}$}}, which by definition allows us to identify that $X$ an \\ \framebox[1.1\width]{\textbf{exponential distribution}}.
 
 }
 
@@ -86,31 +98,50 @@ c& \,\mbox{if} \left(x,y\right)\in\mathbb R\\
 \]
 
 \subsection*{(a)}
-Show that $\frac{1}{c}=$  area of region $R$.
-
+We know that by definition of integral and using the bounds of $R$, \\
+$\int \int_{R} \,dx \,dy = $ area of region $R$, or $\int \int_{R} 1 \,dx \,dy = $ area of region $R$. \\ 
+By definition of pdf, we also know that $\int \int_{R} f_{X, Y} (x, y) \,dx \,dy = 1$. \\
+Plugging in $f_{X, Y}$ in this case, we find that $\int \int_{R} c \,dx \,dy = 1$; we can use algebraic manipulation to find that \\ 
+$c \cdot \int \int_{R} 1 \,dx \,dy = 1$ \\ 
+and equivalently that $\int \int_{R} 1 \,dx \,dy = \frac{1}{c}$ \\
+Using our first statement, we finally find the area of region $R = \frac{1}{c}$.
 
 \subsection*{(b)}
-Suppose $(X, Y)$  is uniformly distributed over the square centered at (0, 0) and with sides
-of length 2. Show that $X$ and $Y$ are independent, with each being distributed uniformly
-over $(-1,1)$
-
+We aim to show that $X$ and $Y$ are independent, i.e. by definition $f_X(x) \cdot f_Y(y) = f_{X, Y} (x,y)$, and uniformly distributed from $[-1, 1]$. We know that $(X, Y)$ is uniformly distributed over the square centered at (0, 0) with side length 2, which means that the values of $X$ and $Y$ will both be in the range $[-1, 1]$. We also know that since the region is a square with side length 2, the total area is $2 \cdot 2 = 4$. Using what we showed in part (a), we can now find that $4 = \frac{1}{c}$, which we can solve to find that $c = \frac{1}{4}$. We can now find $f_X(x)$ and $f_Y(y)$ respectively, and determine that they are both uniform and that our equation that tells us if $X$ and $Y$ are independent holds: \\ \\
+$f_X(x) = \int_{-\infty}^{\infty} f_{X, Y} (x, y) \,dy$ \\ 
+$= \int_{-1}^{1} \frac{1}{4} \,dy$ \\ 
+$= (\frac{y}{4}) |_{-1}^{1}$ \\
+$= \frac{1}{4} - (\frac{-1}{4})$ \\
+$= \frac{1}{2}$ \\
+The pdf is constant, which also tells us that $X$ is uniformly distributed on the range $[-1, 1]$. \\ \\
+Equivalently, $f_Y(y) = \int_{-\infty}^{\infty} f_{X, Y} (x, y) \,dx$ \\ 
+$= \int_{-1}^{1} \frac{1}{4} \,dx$ \\ 
+$= (\frac{x}{4}) |_{-1}^{1}$ \\
+$= \frac{1}{4} - (\frac{-1}{4})$ \\
+$= \frac{1}{2}$ \\
+The pdf is constant, which also tells us that $X$ is uniformly distributed on the range $[-1, 1]$. \\ \\
+Finally, we can see that:
+$f_(X, Y) = f_X(x) \cdot f_Y(y)$ \\
+$\frac{1}{4} = \frac{1}{2} \cdot \frac{1}{2}$ \\ 
+$\frac{1}{4} = \frac{1}{4}$
+\\ \\
+So $X$ and $Y$ are indeed independent.
 
 \subsection*{(c)}
-What is the probability that $(X, Y)$ lies in the circle of radius 1 centered at the origin?
-That is, find $\mathrm P \,(X^2 + Y^ 2 \le 1)$.
-
+We aim to find the probability that $(X, Y)$ lies in the circle of radius 1 centered at the origin, i.e., $\mathrm P \,(X^2 + Y^ 2 \le 1)$. \\ \\ 
+The joint pdf $f_{X, Y} = \frac{1}{4}$ as we found above. We note that the circle is completely contained within the square, so we can effectively simply take the area covered by the circle, which by definition is $\pi r^2 = \pi \cdot 1^2 = \pi$, and multiply it by the probability density function, which would give us the probability that we would end up choosing $(X, Y)$ such that it is within the circle, i.e. the probability that $(X, Y)$ lies in that wholly contained circle. Doing this, we find that this comes out to $\pi \cdot \frac{1}{4} = $ \framebox[1.1\width]{\textbf{$\frac{\pi}{4}$}}.
 
 }
 
 \section*{5.}
 {\Large 
-The time that it takes to service a car is an exponential random variable with rate 1.
+The time that it takes to service a car is an exponential random variable with rate 1, that is, $X \sim \text{Exp}(1)$, with $f(x) = e^{-x}$.
 
 \subsection*{(a)}
-If A. J. brings his car in at time 0 and M. J. brings her car in at time t, what is the
-probability that M. J.’s car is ready before A. J.’s car? (Assume that service times are
-independent and service begins upon arrival of the car.) \\
-$X \sim \text{Exp}(\lambda)$, where $f(x) = \lambda e^{-\lambda x} \text{ for } x \geq 0$, and 0 otherwise.
+AJ brings his car in at time 0 and MJ brings her car in at time $t$. We aim to find the probability that MJ’s car is ready before AJ’s car, that is, P$(m + t < a)$, where $a$ represents the time it takes AJ's car to be ready and $m$ represents the time it takes MJ's car to be ready. \\
+$X \sim \text{Exp}(\lambda)$, where $f(x) = \lambda e^{-\lambda x} \text{ for } x \geq 0$, and 0 otherwise. \\ 
+\framebox[1.1\width]{\textbf{$\frac{\pi}{4}$}}
+
 
 
 \subsection*{(b)}
@@ -123,10 +154,11 @@ time 2?
 
 \section*{6.}
 {\Large 
-Suppose  $X, Y$  are independent random variables with probability density functions
+Suppose $X, Y$  are independent random variables with probability density functions
 \[f_X (t) = f_Y (t) =\frac12e^{-|t|}, \,\,\, t \in \mathbb R\]
-Find the pdf $f_Z (t)$ of $Z = X + Y$ . Hint: Consider the cases $t < 0$ and $t \ge 0$ separately.
-
+Find the pdf $f_Z (t)$ of $Z = X + Y$ . Hint: Consider the cases $t < 0$ and $t \ge 0$ separately. \\ \\ 
+We know that for $Z = X + Y$, $f_Z(t) = \int_{-\infty}^{\infty}f_X(t - s)f_Y(x) \,ds$. \\ 
+By te definition of absolute value, we know that we can have $t < 0$ and $t \geq 0$. 
 
 }
 
