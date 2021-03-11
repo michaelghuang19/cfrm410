@@ -18,18 +18,22 @@
 \section*{1.}
 {\Large 
 Choose a number $X$ at random from the set of numbers
-$\left\{ 1,2,3,4,5\right\} $. Now choose a number $Y$ at random
-from the set $\left\{ 1,\dots,X\right\} $.
+$\left\{ 1,2,3,4,5\right\} $. Now choose a number $Y$ at random from the set $\left\{ 1,\dots,X\right\} $. 
 
 \subsection*{(a)}
-Find the joint pmf of $X$ and $Y$. Hint: think of how  joint pmf  is connected to conditional pmf of $Y$ given $X$.
+Find the joint pmf of $X$ and $Y$. Hint: think of how  joint pmf  is connected to conditional pmf of $Y$ given $X$. \\ \\
+We aim to find $P(X = x, Y = y)$. Because of the way that $Y$ relies on $X$, we can use the definition of conditional probability to simplify this to $P(X = x, Y = y) = P(Y = y \mid X = x)P(X = x) = \frac{1}{x} \cdot \frac{1}{5} = $ \framebox[1.1\width]{\textbf{$\frac{1}{5x}$}}, since the distribution of $X$ is a uniform one across 5 numbers, and $P(Y = y)$ is determined by this initial choice of $x$. We note that this only holds when $x \leq y$, by definition, and is 0 elsewhere.
 
 \subsection*{(b)}
 Find the conditional mass function of $X$ given that $Y=i$,
-for $i=1,2,3,4,5$. That is, find the pmf of $X|_{Y=i}$. 
+for $i=1,2,3,4,5$. That is, find the pmf of $X|{Y=i}$. \\ \\ 
+We aim to find $P(X = x \mid Y = i)$ for $i = 1,2,3,4,5$. We know by the definition of conditional probability that $P(X = x \mid Y = i) = \frac{P(X = x, Y = i)}{P(Y = i)}$. \\
+We found $P(X = x, Y = i)$ previously in part (a). To find $P(Y = i)$, we need to find $P(X = x, Y = i)$ for each possible $x$. For each possible value of $x$ that we derived $i$ from, we know that $P(X = x, Y = i) = P(Y = i \mid X = x)P(X = x) = \frac{1}{5x}$. To account for all the possible cases of $x$ from which we derived our $i$, however, we need to take the sum of the possible $x \geq i$ using the law of total probability, giving us that $P(Y = i) = \sum_{x = i}^{5} \frac{1}{5x}$. \\ \\ 
+Putting it all together, we find that $P(X = x \mid Y = i) = \frac{P(X = x, Y = i)}{P(Y = i)} = $ \framebox[1.1\width]{\textbf{$\frac{\frac{1}{5x}}{\sum_{x=i}^{5} \frac{1}{5x}}$}}, which we note is only valid for $x \geq i$.
 
 \subsection*{(c)}
-Are $X$ and $Y$ independent?
+Are $X$ and $Y$ independent? \\ \\ 
+We will show that $X$ and $Y$ are not independent by contradiction. Suppose that $X$ and $Y$ are independent. By definition, this would mean that $P(X = x) \cdot P(Y = y) = P(X = x, Y = y)$. Take for example $x = 1$ and $y = 2$. We would therefore have that $P(X = 1) \cdot P(Y = 2) = P(X = 1, Y = 2)$. We note that $P(X = 1)$ and $P(Y = 2)$ are all probabilities with valid values and therefore nonzero probabilities. However, $P(X = 1, Y = 2)$ is clearly not possible by definition, since we must have $y \leq x$, so its probability is 0. Since we have two nonzero probabilities multiplying to result in a probability of zero, this is a contradiction. Therefore, $X$ and $Y$ are \framebox[1.1\width]{\textbf{not independent.}}
 
 }
 
@@ -42,7 +46,18 @@ square, then the hospital sends out an ambulance. The road network
 is rectangular, so the travel distance from the hospital, whose coordinates
 are $(0,0)$, to the point $(x,y)$ is $|x|+|y|$. If an accident
 occurs at a point that is uniformly distributed in the square, find
-the expected travel distance of the ambulance.
+the expected travel distance of the ambulance. \\ \\ 
+We aim to find the expected distance, or $E(|X| + |Y|)$, where $f_{X, Y} = \frac{1}{9}$ for $-\frac{3}{2} \leq x,y \leq \frac{3}{2}$, since our square centered at (0, 0) is 3 miles long on each side for a total of 9 square miles, and $F_{X, Y} = 1$, so we can find that $f_x = c = \frac{1}{9}$ (alternatively, solving the equation $F_X = 1 = \int_{-\frac{3}{2}}^{\frac{3}{2}} \int_{-\frac{3}{2}}^{\frac{3}{2}} c \,dx \,dy $ also gives us $c = \frac{1}{9}$). We can then take $E(|X| + |Y|)$ as follows: \\
+$E(|X| + |Y|) = \int \int (|x| + |y|) \cdot f_{X, Y} \,dx \,dy = \int \int (|x| + |y|) \cdot c \,dx \,dy = c \cdot \int \int (|x| + |y|) \,dx \,dy$ \\
+$ = \frac{1}{9} \cdot \int_{-\frac{3}{2}}^{\frac{3}{2}} \int_{-\frac{3}{2}}^{\frac{3}{2}} (|x| + |y|) \,dx \,dy$ \\ 
+$ = \frac{1}{9} \cdot \int_{-\frac{3}{2}}^{\frac{3}{2}} \int_{-\frac{3}{2}}^{\frac{3}{2}} |x| \,dy \,dx + \frac{1}{9} \cdot \int_{-\frac{3}{2}}^{\frac{3}{2}} \int_{-\frac{3}{2}}^{\frac{3}{2}} |y| \,dx \,dy$ \\ 
+$ = \frac{1}{9} \cdot \int_{-\frac{3}{2}}^{\frac{3}{2}} (|x|y) |_{-\frac{3}{2}}^{\frac{3}{2}} \,dx + \frac{1}{9} \cdot \int_{-\frac{3}{2}}^{\frac{3}{2}} (|y|x) |_{-\frac{3}{2}}^{\frac{3}{2}} \,dy$ \\ 
+$ = \frac{1}{3} \cdot \int_{-\frac{3}{2}}^{\frac{3}{2}} |x| \,dx + \frac{1}{3} \cdot \int_{-\frac{3}{2}}^{\frac{3}{2}} |y| \,dy$, which we can combine using change of variable to be \\ 
+$ = \frac{2}{3} \cdot \int_{-\frac{3}{2}}^{\frac{3}{2}} |x| \,dx$ \\ 
+$ = \frac{2}{3} \cdot 2 \cdot \int_{0}^{\frac{3}{2}} x \,dx$ \\
+$ = \frac{4}{3} \cdot \frac{x^2}{2} |_{0}^{\frac{3}{2}}$ \\
+$ = \frac{4}{3} \cdot \frac{9}{4}$ \\
+$ = $ \framebox[1.1\width]{\textbf{$\frac{3}{2}$}} \\
 
 }
 
