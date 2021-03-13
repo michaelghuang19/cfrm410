@@ -67,7 +67,9 @@ $ = $ \framebox[1.1\width]{\textbf{$\frac{3}{2}$}} \\
 There are 3 distinct types of coupons. Independently
 of past types collected, each new one is obtained with the following probabilities: $1/2$ for type $1$, $1/3$ for type $2$, and $1/6$ for type $3$. Let $X$ be the number of different types of coupons that appear among the first $n$ collected. Find the expected value and variance of $X$. \\ \\
 We know that for every round we collect a coupon, we have a probability of collecting each coupon as stated above. We also know that the types of coupons collected are independent from one another. Therefore, we can say that for each coupon type $i$, the probability that we will not have the coupon after $n$ many coupon collections, or $P(C'_i)$ where $C'$ represents not collecting the coupon, is simply $P(C'_i) = (1-P(C_i))^n$. Each $P(C'_i)$ represents the probability of not collecting coupon $i$ at some stage, so we simply aim to take the complement of this to find the probability of collecting the coupon at some stage, and then summing all of these distinct probabilities together to find the expected value of the number of distinct number of coupons that we will collect through $n$ many coupon collections. Mathematically, we can take this to be $\sum_{i = 1}^{3} 1 - P(C'_i) = 3 + \sum_{i=1}^{3} - P(C'_i) = 3 - \sum_{i=1}^{3} (1 - P(C_i))^n = $ \framebox[1.1\width]{\textbf{$3 - (\frac{1}{2})^n - (\frac{2}{3})^n - (\frac{5}{6})^n$}} \\ \\ 
-If we consider $Y$ to be the geometric variables of $X$, in the way that $X = 3 - Y$, then we know by definition of variance that $Var(X) = Var(Y)$. We can then look at the those $Y$ elements specifically, i.e. $(\frac{1}{2})^n + (\frac{2}{3})^n + (\frac{5}{6})^n$. By variance of sums and the fact that $Y_1, Y_2, Y_3$ are independent by definition, we can take the variance $Var(Y_1 + Y_2 + Y_3) = Var(Y_1) + Var(Y_2) + Var(Y_3) = \frac{1-\frac{1}{2}}{(\frac{1}{2})^2} + \frac{1-\frac{2}{3}}{(\frac{2}{3})^2} + \frac{1-\frac{5}{6}}{(\frac{5}{6})^2} = 2 + \frac{3}{4} + \frac{6}{25} = \frac{299}{100} = $ \framebox[1.1\width]{\textbf{2.99}}, by definition of variance for random geometric variable.
+To find the variance, \\ \\
+\framebox[1.1\width]{\textbf{2.99}}
+% If we consider $Y$ to be the geometric variables of $X$, in the way that $X = 3 - Y$, then we know by definition of variance that $Var(X) = Var(Y)$. We can then look at the those $Y$ elements specifically, i.e. $(\frac{1}{2})^n + (\frac{2}{3})^n + (\frac{5}{6})^n$. By variance of sums and the fact that $Y_1, Y_2, Y_3$ are independent by definition, we can take the variance $Var(Y_1 + Y_2 + Y_3) = Var(Y_1) + Var(Y_2) + Var(Y_3) = \frac{1-\frac{1}{2}}{(\frac{1}{2})^2} + \frac{1-\frac{2}{3}}{(\frac{2}{3})^2} + \frac{1-\frac{5}{6}}{(\frac{5}{6})^2} = 2 + \frac{3}{4} + \frac{6}{25} = \frac{299}{100} = $ \framebox[1.1\width]{\textbf{2.99}}, by definition of variance for random geometric variable.
 
 }
 
@@ -77,15 +79,11 @@ The following are general questions about covariance and
 correlation.
 
 \subsection*{(a)}
-Let $X\sim{\rm Bin}\left(n,p\right)$ and $Y\sim G\left(q\right)$
-be random variables ($p,q\in\left(0,1\right)$). Is it possible that $\left|\rho_{X,Y}\right|=1$? \\ \\ 
-We know that $|\rho_{X, Y}| = \frac{\sigma_{XY}}{\sigma_X \sigma_Y}$. Yes because geometric is related to bernoulli which is the basis for binomial. However, they do not look the same in terms of their actual distribution and differe in terms of finite/infinite values. 
+If we have $X\sim{\rm Bin}\left(n,p\right)$ and $Y\sim G\left(q\right)$ as random variables ($p,q\in\left(0,1\right)$), it is \framebox[1.1\width]{\textbf{not possible}} that $\left|\rho_{X,Y}\right|=1$. T This follows since we know that $|\rho_{X, Y}| = 1$ means that the two distributions are perfectly correlated, but we also know by definition that the binomial distribution's pmf goes to 0 after a certain term $n$ whereas the geometric distribution's pmf would continue to reduce infinitely.
 
 \subsection*{(b)}
-Let $X$ be a random variable. Is it possible that $\rho_{X,X^{2}}=1$ for some $X$? What about $\rho_{X,X^{2}}=-1$? \\ \\ 
-It is possible that $\rho_{X, X^2} = 1$; say, for example, if $X$ is the Bernoulli distribution, then $X = X^2$. \\ 
-It is possible that $\rho_{X, X^2} = -1$. For example, if $X$ is the Bernoulli distribution but with negative values as outcome indicators, then we end up with $X$ as being negative, and $X^2 = (-X^2)$ except positive, which would lead to a correlation coefficient of -1. \\ 
-% Can the Bernoulli be negative?
+Let $X$ be a random variable. It is \framebox[1.1\width]{\textbf{possible}} that $\rho_{X,X^{2}}=1$ for some $X$. Say, for example, if $X$ is the Bernoulli distribution, then $X = X^2$, which would naturally lead to the fact that $\rho_{X,X^{2}}=1$. \\ \\
+It is also \framebox[1.1\width]{\textbf{possible}} $\rho_{X,X^{2}}=-1$. Take $X$ such that it is a distribution with all -1 values that when squared, would lead to equal magnitude but instead positive values, which would be a perfect negative correlation. For example, $X$ is the Bernoulli distribution but with negative values as outcome indicators, then we end up with $X$ as being negative, and $X^2 = (-X^2)$ except positive, which would lead to a correlation coefficient of -1.
 
 \subsection*{(c)}
 Let $X,Y$ be random variables with the following joint
