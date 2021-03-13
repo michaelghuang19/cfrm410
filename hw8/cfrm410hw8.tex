@@ -22,7 +22,7 @@ $\left\{ 1,2,3,4,5\right\} $. Now choose a number $Y$ at random from the set $\l
 
 \subsection*{(a)}
 Find the joint pmf of $X$ and $Y$. Hint: think of how  joint pmf  is connected to conditional pmf of $Y$ given $X$. \\ \\
-We aim to find $P(X = x, Y = y)$. Because of the way that $Y$ relies on $X$, we can use the definition of conditional probability to simplify this to $P(X = x, Y = y) = P(Y = y \mid X = x)P(X = x) = \frac{1}{x} \cdot \frac{1}{5} = $ \framebox[1.1\width]{\textbf{$\frac{1}{5x}$}}, since the distribution of $X$ is a uniform one across 5 numbers, and $P(Y = y)$ is determined by this initial choice of $x$. We note that this only holds when $x \leq y$, by definition, and is 0 elsewhere.
+We aim to find $P(X = x, Y = y)$. Because of the way that $Y$ relies on $X$, we can use the definition of conditional probability to simplify this to $P(X = x, Y = y) = P(Y = y \mid X = x)P(X = x) = \frac{1}{x} \cdot \frac{1}{5} = $ \framebox[1.1\width]{\textbf{$\frac{1}{5x}$}}, since the distribution of $X$ is a uniform one across 5 numbers, and $P(Y = y)$ is determined by this initial choice of $x$. We note that this only holds when $x \geq y$, by definition, and is 0 elsewhere.
 
 \subsection*{(b)}
 Find the conditional mass function of $X$ given that $Y=i$,
@@ -57,7 +57,7 @@ $ = \frac{2}{3} \cdot \int_{-\frac{3}{2}}^{\frac{3}{2}} |x| \,dx$ \\
 $ = \frac{2}{3} \cdot 2 \cdot \int_{0}^{\frac{3}{2}} x \,dx$ \\
 $ = \frac{4}{3} \cdot \frac{x^2}{2} |_{0}^{\frac{3}{2}}$ \\
 $ = \frac{4}{3} \cdot \frac{9}{4}$ \\
-$ = $ \framebox[1.1\width]{\textbf{$\frac{3}{2}$}} \\
+$ = $ \framebox[1.1\width]{\textbf{$\frac{3}{2}$}} 
 
 }
 
@@ -67,9 +67,18 @@ $ = $ \framebox[1.1\width]{\textbf{$\frac{3}{2}$}} \\
 There are 3 distinct types of coupons. Independently
 of past types collected, each new one is obtained with the following probabilities: $1/2$ for type $1$, $1/3$ for type $2$, and $1/6$ for type $3$. Let $X$ be the number of different types of coupons that appear among the first $n$ collected. Find the expected value and variance of $X$. \\ \\
 We know that for every round we collect a coupon, we have a probability of collecting each coupon as stated above. We also know that the types of coupons collected are independent from one another. Therefore, we can say that for each coupon type $i$, the probability that we will not have the coupon after $n$ many coupon collections, or $P(C'_i)$ where $C'$ represents not collecting the coupon, is simply $P(C'_i) = (1-P(C_i))^n$. Each $P(C'_i)$ represents the probability of not collecting coupon $i$ at some stage, so we simply aim to take the complement of this to find the probability of collecting the coupon at some stage, and then summing all of these distinct probabilities together to find the expected value of the number of distinct number of coupons that we will collect through $n$ many coupon collections. Mathematically, we can take this to be $\sum_{i = 1}^{3} 1 - P(C'_i) = 3 + \sum_{i=1}^{3} - P(C'_i) = 3 - \sum_{i=1}^{3} (1 - P(C_i))^n = $ \framebox[1.1\width]{\textbf{$3 - (\frac{1}{2})^n - (\frac{2}{3})^n - (\frac{5}{6})^n$}} \\ \\ 
-To find the variance, \\ \\
-\framebox[1.1\width]{\textbf{2.99}}
-% If we consider $Y$ to be the geometric variables of $X$, in the way that $X = 3 - Y$, then we know by definition of variance that $Var(X) = Var(Y)$. We can then look at the those $Y$ elements specifically, i.e. $(\frac{1}{2})^n + (\frac{2}{3})^n + (\frac{5}{6})^n$. By variance of sums and the fact that $Y_1, Y_2, Y_3$ are independent by definition, we can take the variance $Var(Y_1 + Y_2 + Y_3) = Var(Y_1) + Var(Y_2) + Var(Y_3) = \frac{1-\frac{1}{2}}{(\frac{1}{2})^2} + \frac{1-\frac{2}{3}}{(\frac{2}{3})^2} + \frac{1-\frac{5}{6}}{(\frac{5}{6})^2} = 2 + \frac{3}{4} + \frac{6}{25} = \frac{299}{100} = $ \framebox[1.1\width]{\textbf{2.99}}, by definition of variance for random geometric variable.
+If we consider $Y$ to be the $n$-based variables of $X$ (that is, $(\frac{1}{2})^n + (\frac{2}{3})^n + (\frac{5}{6})$), in the way that $X = 3 - Y$, then we know by definition of variance that $Var(X) = Var(Y)$. We can then look at the those $Y$ elements specifically, i.e. $(\frac{1}{2})^n + (\frac{2}{3})^n + (\frac{5}{6})^n$. Since $Y_1, Y_2, Y_3$ represent the 3 events, we can take $Var(Y)$ to be $Var(Y_1) + Var(Y_2) + Var(Y_3) + 2(Cov(Y_1, Y_2)) + 2(Cov(Y_1, Y_2)) + 2(Cov(Y_1, Y_2))$. \\ \\
+To find the variances, we know that since $Y_i$ is an indicator for the $C'_i$, then we have $Var(Y_i)$ such that $Var(Y_i) = P(C'_i)(1 - P(C'_i))$. This means that we have \\
+$Var(Y_1) = (\frac{1}{2})^n(1-(\frac{1}{2})^n)$ \\ 
+$Var(Y_2) = (\frac{2}{3})^n(1-(\frac{2}{3})^n)$ \\
+$Var(Y_3) = (\frac{5}{6})^n(1-(\frac{5}{6})^n)$ \\ \\
+To find the covariances, we use the definition of covariance that tells us for each distinct pair of events is $Cov(Y_i, Y_j) = E(Y_i Y_j) - E(Y_i)E(Y_j) = P(C'_i \cap C'_j) - P(C'_i)P(C'_j)$. Since we have only 3 distinct types of coupons $i, j, k$ in our space, we note that $P(C'_i \cap C'_j) = P(C_k)$. In other words, the probability that we don't get any of the first two types of coupons is the same as the probability that we get only the last type of coupon. Translating this to mathematical expressions: \\
+$Cov(Y_1, Y_2) = P(C_3) - P(C'_1)P(C'_2) = (\frac{1}{6})^n - (\frac{1}{2})^n(\frac{2}{3})^n = (\frac{1}{6})^n - (\frac{1}{3})^n$ \\
+$Cov(Y_1, Y_3) = P(C_2) - P(C'_1)P(C'_3) = (\frac{1}{3})^n - (\frac{1}{2})^n(\frac{5}{6})^n = (\frac{1}{3})^n - (\frac{5}{12})^n$ \\
+$Cov(Y_2, Y_3) = P(C_1) - P(C'_2)P(C'_3) = (\frac{1}{2})^n - (\frac{2}{3})^n(\frac{5}{6})^n = (\frac{1}{2})^n - (\frac{5}{9})^n$ \\ \\ 
+Putting this all together, the final $Var(Y)$ is as follows: \\
+$Var(Y) = $ \framebox[1.1\width]{\textbf{$(\frac{1}{2})^n(1-(\frac{1}{2})^n) + (\frac{2}{3})^n(1-(\frac{2}{3})^n) + (\frac{5}{6})^n(1-(\frac{5}{6})^n) + 2((\frac{1}{6})^n - (\frac{1}{3})^n)$}} \\
+\framebox[1.1\width]{\textbf{$+ 2((\frac{1}{3})^n - (\frac{5}{12})^n) + 2((\frac{1}{2})^n - (\frac{5}{9})^n)$}}
 
 }
 
@@ -97,19 +106,20 @@ c & \,x^{2}+y^{2}\le R;\\
 Show that $X,Y$ are uncorrelated, but that they are not independent. \\ \\
 We know that $|\rho_{X, Y}| = \frac{Cov(X, Y)}{\sqrt{Var(X)Var(Y)}}$. \\ 
 We know that $Cov(X, Y) = E(XY) - E(X)E(Y)$. We know that for this kind of uniform distribution, $E(XY) = \int \int xy \cdot f_{X, Y} \,dx \,dy = \int \int xy \cdot c \,dx \,dy = c \cdot \int \int xy \,dx \,dy$ \\ 
-$ = c \cdot \int_{-\sqrt{R}}^{\sqrt{R}} \int_{-\sqrt{R}}^{\sqrt{R}} xy \,dx \,dy =$ \\ 
-$ c \cdot \int_{-\sqrt{R}}^{\sqrt{R}} y (\frac{x^2}{2} |_{-\sqrt{R}}^{\sqrt{R}}) \,dy$ \\ 
-$ = c \cdot \int_{-\sqrt{R}}^{\sqrt{R}} \frac{R}{2} - \frac{R}{2} \cdot y \,dy$ \\
-$ = c \cdot \int_{-\sqrt{R}}^{\sqrt{R}} 0 \cdot y \,dy$ \\
-$ = c \cdot \int_{-\sqrt{R}}^{\sqrt{R}} 0\,dy$ \\
+$ = c \cdot \int_{-\sqrt{R-x^2}}^{\sqrt{R-x^2}} \int_{-\sqrt{R}}^{\sqrt{R}} xy \,dx \,dy =$ \\ 
+$ c \cdot \int_{-\sqrt{R-x^2}}^{\sqrt{R-x^2}} y (\frac{x^2}{2} |_{-\sqrt{R}}^{\sqrt{R}}) \,dy$ \\ 
+$ = c \cdot \int_{-\sqrt{R-x^2}}^{\sqrt{R-x^2}} \frac{R}{2} - \frac{R}{2} \cdot y \,dy$ \\
+$ = c \cdot \int_{-\sqrt{R-x^2}}^{\sqrt{R-x^2}} 0 \cdot y \,dy$ \\
+$ = c \cdot \int_{-\sqrt{R-x^2}}^{\sqrt{R-x^2}} 0\,dy$ \\
 $ = 0$ \\ \\ 
 In the same way: $E(X) = \int \int x \cdot f_{X, Y} \,dx \,dy = $ \\ 
-$= \int_{-\sqrt{R}}^{\sqrt{R}} \frac{x^2}{2} |_{-\sqrt{R}}^{\sqrt{R}} \,dy $ \\ 
-$= \int_{-\sqrt{R}}^{\sqrt{R}} \frac{R}{2} - \frac{R}{2} \,dy $ \\ 
-$= \int_{-\sqrt{R}}^{\sqrt{R}} 0 \,dy $ \\ 
+$= \int_{-\sqrt{R-x^2}}^{\sqrt{R-x^2}} \int_{-\sqrt{R}}^{\sqrt{R}} x \,dx \,dy $ \\ 
+$= \int_{-\sqrt{R-x^2}}^{\sqrt{R-x^2}} \frac{x^2}{2} |_{-\sqrt{R}}^{\sqrt{R}} \,dy $ \\ 
+$= \int_{-\sqrt{R-x^2}}^{\sqrt{R-x^2}} \frac{R}{2} - \frac{R}{2} \,dy $ \\ 
+$= \int_{-\sqrt{R-x^2}}^{\sqrt{R-x^2}} 0 \,dy $ \\ 
 $= 0$ \\ 
 We find that $E(X)$ = 0, which tells us that $E(X)E(Y) = 0$ as well. In addition, since we found that $E(XY) = 0$, then $Cov(X,Y) = E(XY) - E(X)E(Y) = 0 - 0 = 0$, which in turn tells us that $|\rho_{X, Y}| = \frac{Cov(X, Y)}{\sqrt{Var(X)Var(Y)}} = \frac{0}{\sqrt{Var(X)Var(Y)}} = 0$. This allows us to conclude that $X$ and $Y$ are not correlated. \\ \\
-Now we must show that $X$ and $Y$ are not independent. We will show this by contradiction. Suppose $X$ and $Y$ are independent. This would mean that $P(X = a) \cdot P(Y = b) = P(X = a \cap Y = b)$. However, take the examples $a = \sqrt{R}$ and $b = \sqrt{R}$. In this case, we would expect that if  $X$ and $Y$ are independent, $P(X = \sqrt{R}) \cdot P(Y = \sqrt{R}) = P(X = \sqrt{R} \cap Y = \sqrt{R})$. However, note that while $P(X = \sqrt{R})$ and $P(Y = \sqrt{R})$ separately are nonzero according to the range of $X$ and $Y$ that we can derive from the joint pdf, $P(X = \sqrt{R} \cap Y = \sqrt{R})$ is zero since this would lead to $X^2 + Y^2 = \sqrt{R}^2 + \sqrt{R}^2 = R + R > 2R$, which is out of the bounds of our joint pdf. This is a contradiction. Therefore, we can conclude that $X$ and $Y$ are not independent.
+Now we must show that $X$ and $Y$ are not independent. We will show this by contradiction. Suppose $X$ and $Y$ are independent. This would mean that $P(X = a) \cdot P(Y = b) = P(X = a \cap Y = b)$. However, take the examples $a = \sqrt{R}$ and $b = \sqrt{R}$. In this case, we would expect that if  $X$ and $Y$ are independent, $P(X = \sqrt{R}) \cdot P(Y = \sqrt{R}) = P(X = \sqrt{R} \cap Y = \sqrt{R})$. However, note that while $P(X = \sqrt{R})$ and $P(Y = \sqrt{R})$ separately are nonzero according to the range of $X$ and $Y$ that we can derive from the joint pdf, $P(X = \sqrt{R} \cap Y = \sqrt{R})$ is zero since this means that we have an instance such that $X^2 + Y^2 = \sqrt{R}^2 + \sqrt{R}^2 = R + R = 2R > R$, which is out of the bounds of our joint pdf. This is a contradiction. Therefore, we can conclude that $X$ and $Y$ are not independent.
 
 }
 
