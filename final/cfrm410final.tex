@@ -18,10 +18,6 @@
 \section*{1.}
 {\Large 
 
-Suppose the pdf of X, the distance travelled by a shared electric scooter in a specific neighborhood, in km, is given by  
-\[f(t)=\begin{cases}at+bt^2& 0<t<1\\0& \text{otherwise,}  \end{cases}\]
-with expectation $\rm E(X)=\frac 6{10} km$
-
 \subsection*{(a)}
 To find constants $a$ and $b$, we solve for expectation, that is, \\
 $E(X) = \int_{-\infty}^{\infty} x \cdot f(x) \, dx $: \\ 
@@ -81,9 +77,6 @@ $= \frac{21}{50} - \frac{36}{100}$ \\
 \section*{3.}
 {\Large
 
-For parts (a) and (b), state what probability distribution you are using, including the parameters of the model.
-If  a problem involves using the binomial distribution, and you are thinking of estimating the answer using either the Normal distribution or the Poisson distribution, you must use the only distribution that gives the {\bf{correct}} approximation and not both. Also explain your choice of the distribution, and if there are any assumptions made. 
-
 \subsection*{(a)}
 We will use the binomial distribution since we can consider the incidence of deafness in a newborn dalmatian (as cruel as it sounds) to be a success or failure, with a relatively small probability $p$ and relatively large number of trials $n$. We assume all dalmatians are newborn, and their births and hearing abilities are independent of each other. \\
 We aim to find $P(X \leq 70)$, given that 70 out of 200 dalmatians born were born with deafness. We use the normal distribution for the binomial, since otherwise we would require 70 terms, which gives us a distribution such that $Bin(n,p)$ is approximately $N(np, np(1-p))$, or in our case that $Bin(200, 0.3)$ is approximately $N(60, 42)$. To find $P(X \leq 70)$, we therefore simply need to find the Z-score for Z = $\frac{X - np}{\sqrt{np(1-p)}} = \frac{70-60}{\sqrt{42}} = \frac{10}{\sqrt{42}} = \sim 1.54$, which using a lookup table we can find $\Phi(1.54)$ to be \framebox[1.1\width]{\textbf{0.9382}}.
@@ -91,10 +84,12 @@ We aim to find $P(X \leq 70)$, given that 70 out of 200 dalmatians born were bor
 \subsection*{(b)}
 Eurostar trains to France arrive at London St Pancras station at a rate of $0.6$ trains per  hour. If $X$ is the inter-arrival train time (the time between a train arrival and the next one), find the probability density function of the log inter-arrival time. That is, find the pdf of $Y=\log(X).$ \\ \\
 We know that the rate of train arrival is 0.6 per hour. We can use the exponential distribution since we have a rate which we are also using to then model waiting time. We can therefore model our pdf to be $f(x) = \lambda e^{-\lambda x}$. To find $\lambda$, we need to first think about $E(X)$. \\ 
-Let $Z$ be the function modeling the arrival time of a train. We aim to model $X$ after using the difference between two arrival times $Z$. 
+Let $Z$ be the function modeling the arrival time of a train. We aim to model $X$ after using the difference between two arrival times $Z$. \\ 
+$f(x) = 0.6e^{-0.6x}$, take the log of this: \\ 
+$ln(f(x)) = -ln(0.6)0.6x$, then perform change of variable: \\ 
+\framebox[1.1\width]{\textbf{$f(y) = -ln(0.6)0.6y$}}
 
 \subsection*{(c)}
-Suppose $X$ is Binomial with parameter $(a,p)$ and $Y$ is Binomial with parameter $(b,p)$, and that X and Y are independent, prove analytically (mathematically) that  $Z=X+Y$ is also Binomial with parameter $(a+b,p).$ You may find this useful: $\sum_{i=0}^{n}\,{{ m}\choose{n- i}}{ p\choose i } = {{m+p}\choose n}$ \\ \\
 We know that $X$ and $Y$ can be represented as $p_X (k) = \binom{a}{k}p^k(1-p)^{a-k}$ and $p_Y (k) = \binom{b}{k}p^k(1-p)^{b-k}$, respectively. We also know that the distribution $Z = X + Y$ denotes all those combinations of $X$ and $Y$ that add up to some sum $Z$. In terms of probability, since they are independent, this means in the range of possible values for $Z$, $P(Z = i) = \sum P(X = k)P(Y = i - k)$ and vice-versa for each possible $k$ value of $X$ and $Y$ which combine to sum to $Z = i$. By this definition, we can say for the general case that \\ 
 $p_Z (k) = P(Z = n) = \sum_{} \binom{a}{x} \cdot \binom{b}{y} \cdot p(Y = y) \cdot p(X = x)$ where $x + y = n$. So \\
 $= \sum_{i=0}^{n} p_X(x) \cdot p_Y(y)$ where $x + y = n$ \\
@@ -109,8 +104,6 @@ Which is exactly a binomial distribution $Z$ in the form $Z \sim Binom(a + b, p)
 
 \section*{4.}
 {\Large 
-
-Given that $X,Y\text{ and } Z$ are all normally distributed with mean $0,0,\text{ and } 2$ respectively and variance $1,2,\text{ and } 9$ respectively.
 
 \subsection*{(a)}
 We know that $Cov(X,Z) = \frac{Var(X + Y) - Var(X) - Var(Y)}{2}$. We know as well that $\rho_{X, Z} = \frac{1}{3} = \frac{Cov(X, Z)}{\sqrt{Var(X)Var(Z)}}$. Solving this second equation: \\
