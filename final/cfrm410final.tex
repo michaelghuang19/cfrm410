@@ -148,7 +148,12 @@ $= $ \framebox[1.1\width]{\textbf{$\sim$ 2.63972625061}}
 Student grades for a history exam are independent random variables each with the same probability density function (pdf)
 \[f(t)=\begin{cases}4t^{-5}& 1<t<\infty\\ 0& \text{otherwise.}  \end{cases}\]
 Here, $t$ represents the grade of a student.  Say four students  take  the history exam. What is the cdf and pdf  of the {\bf{maximum}} of the four students grades. Hint: Let $G_i$ be student $i$'s grade, then the  $G_i$'s are iid random variables each with pdf $f(t)$. \\ \\ 
-
+Let $G_i$ be the grade of student $i$, with each $G_i$ being an independently and identically distributed random variable each with the given pdf. We can find by definition that $F(t) = \int f(t) \, dt = \int \frac{4}{t^5} \, dt = -\frac{1}{t^4}$, but since we start at 1, we end up with $F(t) = 1 - \frac{1}{t^4}$. We can verify this graphically. \\ \\
+We use the cdf definition to find $F(t) = P(G \leq t) = P(max\{G_1, G_2, G_3, G_4\} \leq t) $ \\ 
+$ = P(max\{G_1, G_2, G_3, G_4\} \leq t)$ \\
+$= P(G_1 \leq t, G_2 \leq t, G_3 \leq t, G_4 \leq t)$, but since all $G_i$ are iid, this equals \\
+$= P(G_1 \leq t) \cdot P(G_2 \leq t) \cdot P(G_3 \leq t) \cdot P(G_4 \leq t) = (1-\frac{1}{t^4})^4$. Our cdf is therefore \framebox[1.1\width]{\textbf{$(1-\frac{1}{t^4})^4$}} \\ \\
+To find our pdf, we simply differentiate: $\frac{d}{dt} (1-\frac{1}{t^4})^4 = 4(1 - \frac{1}{t^4})^3 \cdot \frac{4}{t^5} = $  \framebox[1.1\width]{\textbf{$\frac{16(t^4-1)^3}{t^{17}}$}} \\ 
 
 }
 
