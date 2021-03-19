@@ -23,14 +23,58 @@ Suppose the pdf of X, the distance travelled by a shared electric scooter in a s
 with expectation $\rm E(X)=\frac 6{10} km$
 
 \subsection*{(a)}
-Find the constants $a$ and $b$. \\ 
-\framebox[1.1\width]{\textbf{831600 outcomes}}
+To find constants $a$ and $b$, we solve for expectation, that is, \\
+$E(X) = \int_{-\infty}^{\infty} x \cdot f(x) \, dx $: \\ 
+$\frac{6}{10} = \int_{0}^{1} t \cdot (at + bt^2) \, dt$ \\
+$\frac{6}{10} = \int_{0}^{1} at^2 + bt^3 \, dt$ \\
+$\frac{6}{10} = \frac{at^3}{3} + \frac{bt^4}{4} |_{0}^{1}$ \\
+$\frac{6}{10} = (\frac{a \cdot 1^3}{3} + \frac{b \cdot 1^4}{4}) - 0$ \\
+$\frac{6}{10} = (\frac{a}{3} + \frac{b}{4})$ \\
+$36 = 20a + 15b$ \\
+And to fully construct the system of equations to solve for two variables, we can also use the probability axiom that tells us that \\
+$1 = \int_{-\infty}^{\infty} f(x) \, dx $: \\ 
+$1 = \int_{0}^{1} at + bt^2 \, dt$ \\
+$1 = \frac{at^2}{2} + \frac{bt^3}{3} |_{0}^{1}$ \\
+$1 = (\frac{a \cdot 1^2}{2} + \frac{b \cdot 1^3}{3}) - 0$ \\
+$1 = (\frac{a}{2} + \frac{b}{3})$ \\
+$6 = 3a + 2b$ \\ \\ 
+Now we have our system of equations to solve:
+\[\begin{cases}
+36 = 20a + 15b&\\
+6 = 3a + 2b& 
+\end{cases}\]
+Taking the second equation, we get $b = 3 - \frac{3a}{2}$ which we can substitute back into the first equation: \\ 
+$36 = 20a + 15(3 - \frac{3a}{2})$ \\
+$36 = 20a + 45 - \frac{45a}{2}$ \\
+$-9 = - \frac{5a}{2}$ \\
+\framebox[1.1\width]{\textbf{$a = \frac{18}{5}$}} \\ 
+Which in turn tells us that \\ 
+$b = 3 - \frac{3 \cdot \frac{18}{5}}{2}$ \\ 
+$b = 3 - \frac{3 \cdot \frac{18}{5}}{2}$ \\ 
+\framebox[1.1\width]{\textbf{$b = -\frac{12}{5}$}} 
 
 \subsection*{(b)}
-What is the probability that the distance travelled by the  scooter is at most $\frac34$ km?
+By definition, $P(X \leq \frac{3}{4})$ is $\int_{-\infty}^{\frac{3}{4}} f(x) \, dx$ \\ 
+$= \int_{0}^{\frac{3}{4}} \frac{18t}{5} - \frac{12t^2}{5} \, dt$ \\ 
+$= \frac{9t^2}{5} - \frac{4t^3}{5} |_{0}^{\frac{3}{4}}$ \\ 
+$= (\frac{9}{5} \cdot \frac{9}{16} - \frac{4}{5} \cdot \frac{27}{64}) - 0$ \\ 
+$= \frac{81}{80} - \frac{108}{320}$ \\ 
+= \framebox[1.1\width]{\textbf{$\frac{54}{80}$}}
 
 \subsection*{(c)}
-Calculate the variance of the distance travelled.
+By definition, we know that $Var(X) = E(X^2) - E(X)^2$. We have $E(X)$, so let's find $E(X^2)$: \\ 
+$E(X^2) = \int_{-\infty}^{\infty} x^2 \cdot f(x) \,dx$ \\ 
+$= \int_{0}^{1} t^2 \cdot (\frac{18t}{5} - \frac{12t^2}{5}) \,dt$ \\ 
+$= \int_{0}^{1} \frac{18t^3}{5} - \frac{12t^4}{5} \,dt$ \\ 
+$= \frac{9t^4}{10} - \frac{12t^5}{25} |_{0}^{1}$ \\ 
+$= (\frac{9 \cdot 1^4}{10} - \frac{12 \cdot 1^5}{25}) - 0$ \\ 
+$= (\frac{9}{10} - \frac{12}{25})$ \\ 
+$= \frac{21}{50}$ \\ \\ 
+Putting this all together, we have \\ 
+$Var(X) = E(X^2) - E(X)^2$ \\
+$= \frac{21}{50} - (\frac{6}{10})^2$ \\
+$= \frac{21}{50} - \frac{36}{100}$ \\
+= \framebox[1.1\width]{\textbf{$\frac{3}{50}$}}
 
 }
 
@@ -41,13 +85,25 @@ For parts (a) and (b), state what probability distribution you are using, includ
 If  a problem involves using the binomial distribution, and you are thinking of estimating the answer using either the Normal distribution or the Poisson distribution, you must use the only distribution that gives the {\bf{correct}} approximation and not both. Also explain your choice of the distribution, and if there are any assumptions made. 
 
 \subsection*{(a)}
-When considering buying a newborn dalmatian, one needs to be aware of incidence of deafness of this particular breed which is a trait that can be passed along to the offspring.  It is said that approximately 30\% of dalmatians are born with deafness. Over the past 10 years, out of 200 dalmatians born in a dog kennel named Seattle puppy house, 70 were born with deafness. Should  Seattle puppy house be worried about their breeding reputation? That is, find the probability that in 200 births, less than 70 will have been born with this trait. Hint: assume one dog's hearing ability is independent of other dogs' hearing ability.
+We will use the binomial distribution since we can consider the incidence of deafness in a newborn dalmatian (as cruel as it sounds) to be a success or failure, with a relatively small probability $p$ and relatively large number of trials $n$. We assume all dalmatians are newborn, and their births and hearing abilities are independent of each other. \\
+We aim to find $P(X \leq 70)$, given that 70 out of 200 dalmatians born were born with deafness. We use the normal distribution for the binomial, since otherwise we would require 70 terms, which gives us a distribution such that $Bin(n,p)$ is approximately $N(np, np(1-p))$, or in our case that $Bin(200, 0.3)$ is approximately $N(60, 42)$. To find $P(X \leq 70)$, we therefore simply need to find the Z-score for Z = $\frac{X - np}{\sqrt{np(1-p)}} = \frac{70-60}{\sqrt{42}} = \frac{10}{\sqrt{42}} = \sim 1.54$, which using a lookup table we can find $\Phi(1.54)$ to be \framebox[1.1\width]{\textbf{0.9382}}.
 
 \subsection*{(b)}
-Eurostar trains to France arrive at London St Pancras station at a rate of $0.6$ trains per  hour. If $X$ is the inter-arrival train time (the time between a train arrival and the next one), find the probability density function of the log inter-arrival time. That is, find the pdf of $Y=\log(X).$
+Eurostar trains to France arrive at London St Pancras station at a rate of $0.6$ trains per  hour. If $X$ is the inter-arrival train time (the time between a train arrival and the next one), find the probability density function of the log inter-arrival time. That is, find the pdf of $Y=\log(X).$ \\ \\
+We know that the rate of train arrival is 0.6 per hour. We can use the exponential distribution since we have a rate which we are also using to then model waiting time. We can therefore model our pdf to be $f(x) = \lambda e^{-\lambda x}$. To find $\lambda$, we need to first think about $E(X)$. \\ 
+Let $Z$ be the function modeling the arrival time of a train. We aim to model $X$ after using the difference between two arrival times $Z$. 
 
 \subsection*{(c)}
-Suppose $X$ is Binomial with parameter $(a,p)$ and $Y$ is Binomial with parameter $(b,p)$, and that X and Y are independent, prove analytically (mathematically) that  $Z=X+Y$ is also Binomial with parameter $(a+b,p).$ You may find this useful: $\sum_{i=0}^{n}\,{{ m}\choose{n- i}}{ p\choose i } = {{m+p}\choose n}$
+Suppose $X$ is Binomial with parameter $(a,p)$ and $Y$ is Binomial with parameter $(b,p)$, and that X and Y are independent, prove analytically (mathematically) that  $Z=X+Y$ is also Binomial with parameter $(a+b,p).$ You may find this useful: $\sum_{i=0}^{n}\,{{ m}\choose{n- i}}{ p\choose i } = {{m+p}\choose n}$ \\ \\
+We know that $X$ and $Y$ can be represented as $p_X (k) = \binom{a}{k}p^k(1-p)^{a-k}$ and $p_Y (k) = \binom{b}{k}p^k(1-p)^{b-k}$, respectively. We also know that the distribution $Z = X + Y$ denotes all those combinations of $X$ and $Y$ that add up to some sum $Z$. In terms of probability, since they are independent, this means in the range of possible values for $Z$, $P(Z = i) = \sum P(X = k)P(Y = i - k)$ and vice-versa for each possible $k$ value of $X$ and $Y$ which combine to sum to $Z = i$. By this definition, we can say for the general case that \\ 
+$p_Z (k) = P(Z = n) = \sum_{} \binom{a}{x} \cdot \binom{b}{y} \cdot p(Y = y) \cdot p(X = x)$ where $x + y = n$. So \\
+$= \sum_{i=0}^{n} p_X(x) \cdot p_Y(y)$ where $x + y = n$ \\
+$= \sum_{i=0}^{n} p_X(x) \cdot p_Y(n - x)$ \\
+$= \sum_{i=0}^{n} \binom{a}{i} p^i(1-p)^{a-i} \cdot \binom{b}{k - i} p^{n-i}(1-p)^{b - (n-i)}$ \\
+$= \sum_{i=0}^{n} \binom{a}{i} \binom{b}{n - i} \cdot p^i p^{n-i} \cdot (1-p)^{b - n + i} (1-p)^{a-i}$ \\
+$= \sum_{i=0}^{n} \binom{a}{i} \binom{b}{n - i} \cdot p^n \cdot (1-p)^{a + b - n}$.    Here, we use the provided equation: \\
+$= \binom{a + b}{n} \cdot p^n \cdot (1-p)^{a + b - n}$ \\
+Which is exactly a binomial distribution $Z$ in the form $Z \sim Binom(a + b, p)$, which proves our original statement.
 
 }
 
@@ -57,11 +113,20 @@ Suppose $X$ is Binomial with parameter $(a,p)$ and $Y$ is Binomial with paramete
 Given that $X,Y\text{ and } Z$ are all normally distributed with mean $0,0,\text{ and } 2$ respectively and variance $1,2,\text{ and } 9$ respectively.
 
 \subsection*{(a)}
-if $\rho_{X,Z}=\frac13$ what is $\rm {Var} (X+Z)?$ 
+We know that $Cov(X,Z) = \frac{Var(X + Y) - Var(X) - Var(Y)}{2}$. We know as well that $\rho_{X, Z} = \frac{1}{3} = \frac{Cov(X, Z)}{\sqrt{Var(X)Var(Z)}}$. Solving this second equation: \\
+$\frac{1}{3} = \frac{Cov(X,Z)}{\sqrt{Var(X)Var(Z)}}$ \\
+$\frac{1}{3} = \frac{Cov(X,Z)}{\sqrt{1 \cdot 9}}$ \\
+$\frac{1}{3} = \frac{Cov(X,Z)}{3}$ \\
+So we know that $Cov(X, Z) = 1$. Using this to solve for the first equation: \\
+$1 = \frac{Var(X + Z) - Var(X) - Var(Z)}{2}$ \\
+$1 = \frac{Var(X + Z) - 1 - 9}{2}$ \\
+$2 = Var(X + Z) - 10$ \\
+$Var(X + Z) = $ \framebox[1.1\width]{\textbf{12}}.
 
 \subsection*{(b)}
-Suppose the r.v. $Y$ is independent from the r.v. $Y+Z$. Find the covariance of $Z$ and $Y.$
-
+We aim to find $Cov(Z, Y)$, given that $Y$ is independent from $Y + Z$. We know that $Cov(Z, Y) = \frac{Var(Z + Y) - Var(Z) - Var(Y)}{2}$. The only value we need to find is $Var(Z+Y)$. \\
+We know that $Var(Z + Y + Y) = Var(Z + Y) + Var(Y) + 2Cov(Z + Y, Y)$. Since $Z+Y$ and $Y$ are independent, we know that $Var(Z + Y + Y) = Var(Z + Y - Y) = Var(Z) = 9$. Plugging this into the former equation, we find that $9 = Var(Z+Y) + 2$, or that $Var(Z + Y) = 7$ (Note that $Cov(Z+Y, Y) = 0$ since $Z+Y$ and $Y$ are independent, yet again). \\ \\
+Putting this all together, we can find that $Cov(Z, Y) = \frac{7 - 9 - 2}{2} = $ \framebox[1.1\width]{\textbf{-2}}.
 
 }
 
@@ -69,12 +134,20 @@ Suppose the r.v. $Y$ is independent from the r.v. $Y+Z$. Find the covariance of 
 {\Large 
 
 \subsection*{(a)}
-A chemistry class contains twenty children; 10 are boys and 10 are girls. For an upcoming experiment, the children are arranged into 10 pairs of 2 children each.  If $ N$ is the number of pairs that consist of a boy and a girl, what is the expected value and the variance of $N$? 
+We aim to find $E(N)$ and $Var(N)$. Let us consider the distribution of $N$ by pair $i$. For any given pair, the probability of having a person of the opposite gender paired up is $\frac{10^2}{\binom{20}{2}} = \frac{10}{19}$, since out of the $\binom{20}{2}$ ways to pick a pair, exactly $10 \cdot 10$ perfectly pair up a boy and girl. In other words, for each pair $i$, $E(N_i) = \frac{10}{19}$; implicitly this means that $N_i$ is Bernoulli such that it is 0 for not a boy-girl pair and 1 for a boy-girl pair. Therefore, to find the expected value for all 10 pairs, we would have $E(\sum_{i=1}^{10}N_i) = 10 \cdot E(N_i) =$ \framebox[1.1\width]{\textbf{$\frac{100}{19}$}}. \\ \\
+Since we are considering many random variables $N_i$, we can use variance of sums to find $Var(\sum_{i=1}^{10}N_i)$ = $\sum_{i=1}^{10} Var(N_i) + \sum_{i \neq j}Cov(N_i, N_j)$. \\
+To find the variance, we can find $Var(X_i) = E(X_i^2) - E(X_i)^2 = \frac{10}{19} - (\frac{10}{19})^2 = \frac{90}{361}$ \\
+To find the covariance, we can take $Cov(N_i, N_j) = E(N_iN_j) - E(N_i)E(N_j)$ for $i \neq j$. We can find $E(N_iN_j) = P(N_i = \text{b-g pair})P(N_j = \text{b-g pair}) = P(N_i = \text{b-g pair}) \cdot P(N_j = \text{b-g pair} \mid N_i = \text{b-g pair}) = \frac{10^2}{\binom{20}{2}} \cdot \frac{9^2}{\binom{18}{2}} = \frac{10}{19} \cdot \frac{9}{17} = \frac{90}{323}$. We can then also find $E(N_i)E(N_j) = (\frac{10}{19})^2 = \frac{100}{361}$. We therefore have $Covar(N_i, N_j) = \frac{10}{6137}$. \\ 
+Putting this all together, we find that \\
+$Var(\sum_{i=1}^{10}N_i) = \sum_{i=1}^{10} Var(N_i) + \sum_{i \neq j}Cov(N_i, N_j)$ \\ 
+$= 10 \cdot \frac{90}{361} + 10 \cdot 9 \cdot \frac{10}{6137}$ \\ 
+$= \frac{900}{361} + \frac{900}{6137}$ \\
+$= $ \framebox[1.1\width]{\textbf{$\sim$ 2.63972625061}}
 
 \subsection*{(b)}
 Student grades for a history exam are independent random variables each with the same probability density function (pdf)
 \[f(t)=\begin{cases}4t^{-5}& 1<t<\infty\\ 0& \text{otherwise.}  \end{cases}\]
-Here, $t$ represents the grade of a student.  Say four students  take  the history exam. What is the cdf and pdf  of the {\bf{maximum}} of the four students grades. Hint: Let $G_i$ be student $i$'s grade, then the  $G_i$'s are iid random variables each with pdf $f(t)$.  
+Here, $t$ represents the grade of a student.  Say four students  take  the history exam. What is the cdf and pdf  of the {\bf{maximum}} of the four students grades. Hint: Let $G_i$ be student $i$'s grade, then the  $G_i$'s are iid random variables each with pdf $f(t)$. \\ \\ 
 
 
 }
