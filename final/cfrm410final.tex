@@ -78,7 +78,7 @@ $= \frac{21}{50} - \frac{36}{100}$ \\
 {\Large
 
 \subsection*{(a)}
-We will use the binomial distribution since we can consider the incidence of deafness in a newborn dalmatian (as cruel as it sounds) to be a success or failure, with a relatively small probability $p$ and relatively large number of trials $n$. We assume all dalmatians are newborn, and their births and hearing abilities are independent of each other. \\
+We will use the binomial distribution since we can consider the incidence of deafness in a newborn dalmatian (as cruel as it sounds) to be a success or failure, with a relatively small probability $p$ and relatively large number of trials $n$. We assume all dalmatians are newborn, and their births and hearing abilities are independent of each other. \\ \\
 We aim to find $P(X \leq 70)$, given that 70 out of 200 dalmatians born were born with deafness. We use the normal distribution for the binomial, since otherwise we would require 70 terms, which gives us a distribution such that $Bin(n,p)$ is approximately $N(np, np(1-p))$, or in our case that $Bin(200, 0.3)$ is approximately $N(60, 42)$. To find $P(X \leq 70)$, we therefore simply need to find the Z-score for Z = $\frac{X - np}{\sqrt{np(1-p)}} = \frac{70-60}{\sqrt{42}} = \frac{10}{\sqrt{42}} = \sim 1.54$, which using a lookup table we can find $\Phi(1.54)$ to be \framebox[1.1\width]{\textbf{0.9382}}. This means that the puppy house should be worried about their reputation since there is a $94\%$ that the rate of deafness should be lower, which means that given a normal distribution they would be in the top $6-7\%$ in the incidence of deafness.
 
 \subsection*{(b)}
@@ -137,11 +137,8 @@ $Var(\sum_{i=1}^{10}N_i) = \sum_{i=1}^{10} Var(N_i) + \sum_{i \neq j}Cov(N_i, N_
 $= 10 \cdot \frac{90}{361} + 10 \cdot 9 \cdot \frac{10}{6137}$ \\ 
 $= \frac{900}{361} + \frac{900}{6137}$ \\
 $= $ \framebox[1.1\width]{\textbf{$\sim$ 2.63972625061}}
-
+ 
 \subsection*{(b)}
-Student grades for a history exam are independent random variables each with the same probability density function (pdf)
-\[f(t)=\begin{cases}4t^{-5}& 1<t<\infty\\ 0& \text{otherwise.}  \end{cases}\]
-Here, $t$ represents the grade of a student.  Say four students  take  the history exam. What is the cdf and pdf  of the {\bf{maximum}} of the four students grades. Hint: Let $G_i$ be student $i$'s grade, then the  $G_i$'s are iid random variables each with pdf $f(t)$. \\ \\ 
 Let $G_i$ be the grade of student $i$, with each $G_i$ being an independently and identically distributed random variable each with the given pdf. We can find by definition that $F(t) = \int f(t) \, dt = \int \frac{4}{t^5} \, dt = -\frac{1}{t^4}$, but since we start at 1, we end up with $F(t) = 1 - \frac{1}{t^4}$. We can verify this graphically. \\ \\
 We use the cdf definition to find $F(t) = P(G \leq t) = P(max\{G_1, G_2, G_3, G_4\} \leq t) $ \\ 
 $ = P(max\{G_1, G_2, G_3, G_4\} \leq t)$ \\
